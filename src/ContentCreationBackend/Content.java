@@ -4,32 +4,33 @@
  */
 package ContentCreationBackend;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
+
 /**
  *
  * @author yaras
  */
 public abstract class Content {
-    String contendID;
-    String authorID;
-    String content;
-    LocalDateTime timestamp;
 
-    public Content( String authorID, String content, LocalDateTime timestamp) {
-        contendID = UUID.randomUUID().toString();
+    private String contentID;
+    private String authorID;
+    private String content;
+    private LocalDateTime timestamp;
+
+    public Content(String authorID, String content, LocalDateTime timestamp) {
+        contentID = UUID.randomUUID().toString();
         this.authorID = authorID;
         this.content = content;
         this.timestamp = timestamp;
     }
-    
-    public String getContendID() {
-        return contendID;
+
+    public String getContentID() {
+        return contentID;
     }
 
-    public void setContendID(String contendID) {
-        this.contendID = contendID;
+    public void setContentID(String contentID) {
+        this.contentID = contentID;
     }
 
     public String getAuthorID() {

@@ -9,7 +9,7 @@ package ContentCreationBackend;
  * @author yaras
  */
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ContentDataBase {
 
@@ -29,20 +29,33 @@ public class ContentDataBase {
             if (content instanceof Post) {
                 posts.add(content);
             }
-        } 
+        }
         return posts;
     }
-    public ArrayList <Content> getStories(){
+
+    public ArrayList<Content> getStories() {
         ArrayList<Content> stories = new ArrayList<>();
-        for(Content content : contentList){
-            if (content instanceof Story){
+        for (Content content : contentList) {
+            if (content instanceof Story) {
                 Story story = (Story) content;
-                if (!story.isExpired())
-                {
+                if (!story.isExpired()) {
                     stories.add(content);
                 }
             }
         }
         return stories;
+    }
+
+    public void deleteExpiredStories() {
+        ArrayList<Content> expiredStories = new ArrayList<>();
+        for (Content content : contentList) {
+            if (content instanceof Story) {
+                Story story = (Story) content;
+                if (story.isExpired()) {
+                    expiredStories.add(story);
+                }
+            }
+        }
+        contentList.removeAll(expiredStories);
     }
 }
