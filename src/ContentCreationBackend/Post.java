@@ -4,10 +4,16 @@
  */
 package ContentCreationBackend;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author yaras
  */
-public class Post {
+public class Post extends Content{
+    
+    public Post(String authorID, String content, LocalDateTime timestamp) {
+        super(authorID, content, timestamp);
+    }
     
 }

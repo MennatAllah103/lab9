@@ -10,4 +10,6 @@ package ContentCreationBackend;
  */
 public interface StoryExpire {
     
+    public abstract boolean isExpired();
+    
 }
