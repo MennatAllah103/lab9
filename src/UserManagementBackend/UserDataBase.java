@@ -18,8 +18,10 @@ import org.json.JSONObject;
  * @author LENOVO
  */
 public class UserDataBase {
-
+    ArrayList<User> Users=new ArrayList<>(); 
     public UserDataBase() {
+        
+        Users=ReadUserFromFile();
         
                          }
     
@@ -41,11 +43,11 @@ public class UserDataBase {
             file.write(usersArray.toString(4));
             file.close();
         } catch (IOException e) {
-            System.out.println("Error");
+            System.out.println("Error saving users to file");
         }
     }
      public static ArrayList<User> ReadUserFromFile(){
-       ArrayList<User> user=new ArrayList<>(); 
+       ArrayList<User> users=new ArrayList<>(); 
       try {
             String json = new String(Files.readAllBytes(Paths.get("users.json")));
             JSONArray usersArray = new JSONArray(json);
@@ -58,7 +60,7 @@ public class UserDataBase {
                 String password = userJson.getString("password");
                 String username=userJson.getString("username");
                 boolean status=userJson.getBoolean("status");
-                user.add(new User(id, email, date, password,status,username));
+                users.add(new User(id, email, date, password,status,username));
             }
 
         } catch (IOException e) {
@@ -66,26 +68,50 @@ public class UserDataBase {
         } catch (JSONException e) {
             System.err.println("Error parsing JSON data: " + e.getMessage());
         }
-       return user;  
+       return users;  
        }
-       
-       
-       
-       
-       
-       
-       
-       
+     public boolean AddUser(User user)  {
+     
+     for (User u: Users)
+     {
+       if(u.getUserId().equals(user.getUserId())){
+           System.out.println("User with Id"+user.getUserId()+"already exits");
+           return false;
+     }
       
      }
+     Users.add(user);
+     SaveUserToFile(Users);
+     return true;
      
+     }
+     public void updateStatus(String userId,boolean status)
+     {   User user=getUserById(userId);
+         if(user!=null){
+             user.setStatus(status);
+             SaveUserToFile(Users);
+         }
+         else System.out.println("User Id not found");
+         
+     }
+     public User getUserById(String userId)
+     {
+     for(User u:Users)
+     {
+     if(u.getUserId().equals(userId))
+         return u;
+     } 
      
-     
-     
-     
+      return null;
+     }
     
-
-    
-    
-    
-
+    public User getUserByEmail(String email){
+      for(User u:Users)  
+      {
+          if (u.getEmail().equals(email))
+              return u;
+          
+    }
+      return null;
+    }
+}
