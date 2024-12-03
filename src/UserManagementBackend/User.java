@@ -19,12 +19,12 @@ public class User {
     private boolean status;
     private String username;
 
-    public User(String userId, String email, LocalDate dateOfBirth, String password,boolean status,String username) {
-        this.userId = userId;
+    public User( String email, LocalDate dateOfBirth, String password,String username) {
+        //userId =
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.password = password;
-        this.status=status;
+       // this.status=status;
         this.username=username;
     }
     public String getEmail() {

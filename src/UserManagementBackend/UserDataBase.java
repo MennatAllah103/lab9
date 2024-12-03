@@ -60,7 +60,7 @@ public class UserDataBase {
                 String password = userJson.getString("password");
                 String username=userJson.getString("username");
                 boolean status=userJson.getBoolean("status");
-                users.add(new User(id, email, date, password,status,username));
+                users.add(new User(email, date, password, username));
             }
 
         } catch (IOException e) {
