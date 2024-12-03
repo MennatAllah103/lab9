@@ -16,10 +16,10 @@ public class User {
     private String email;
     private LocalDate dateOfBirth;
     private String password;
-    private String status;
+    private boolean status;
     private String username;
 
-    public User(String userId, String email, LocalDate dateOfBirth, String password,String status,String username) {
+    public User(String userId, String email, LocalDate dateOfBirth, String password,boolean status,String username) {
         this.userId = userId;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
@@ -35,14 +35,6 @@ public class User {
         this.email = email;
     }
 
-    public LocalDate getDob() {
-        return dateOfBirth;
-    }
-
-    public void setDob(LocalDate dob) {
-        this.dateOfBirth = dob;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -51,11 +43,11 @@ public class User {
         this.password = password;
     }
 
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
     public String getUserId() {
@@ -81,6 +73,8 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+    
+    
     
 
     
