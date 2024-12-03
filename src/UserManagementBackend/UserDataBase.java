@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package UserManagementBackend;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,28 +14,26 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-/**
- *
- * @author LENOVO
- */
+
 public class UserDataBase {
-    ArrayList<User> Users=new ArrayList<>(); 
+
+    private ArrayList<User> Users = new ArrayList<>();
+
     public UserDataBase() {
-        
-        Users=ReadUserFromFile();
-        
-                         }
-    
-    public static void SaveUserToFile(ArrayList<User> user)
-    {
-    JSONArray usersArray = new JSONArray();
+       
+        Users = ReadUserFromFile();
+
+    }
+
+    public static void SaveUserToFile(ArrayList<User> user) {
+        JSONArray usersArray = new JSONArray();
         for (User u : user) {
             JSONObject j = new JSONObject();
             j.put("userId", u.getUserId());
             j.put("email", u.getEmail());
             j.put("dateOfBirth", u.getDateOfBirth());
             j.put("password", u.getPassword());
-            j.put("username",u.getUsername());
+            j.put("username", u.getUsername());
             j.put("status", u.getStatus());
             usersArray.put(j);
         }
@@ -46,9 +45,10 @@ public class UserDataBase {
             System.out.println("Error saving users to file");
         }
     }
-     public static ArrayList<User> ReadUserFromFile(){
-       ArrayList<User> users=new ArrayList<>(); 
-      try {
+
+    public ArrayList<User> ReadUserFromFile() {
+         Users.clear();
+        try {
             String json = new String(Files.readAllBytes(Paths.get("users.json")));
             JSONArray usersArray = new JSONArray(json);
             DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
@@ -58,9 +58,9 @@ public class UserDataBase {
                 String id = userJson.getString("userId");
                 LocalDate date = LocalDate.parse(userJson.getString("dateOfBirth"), formatter);
                 String password = userJson.getString("password");
-                String username=userJson.getString("username");
-                boolean status=userJson.getBoolean("status");
-                users.add(new User(id, email, date, password,status,username));
+                String username = userJson.getString("username");
+                boolean status = userJson.getBoolean("status");
+                Users.add(new User(id, email, date, password, status, username));
             }
 
         } catch (IOException e) {
@@ -68,50 +68,52 @@ public class UserDataBase {
         } catch (JSONException e) {
             System.err.println("Error parsing JSON data: " + e.getMessage());
         }
-       return users;  
-       }
-     public boolean AddUser(User user)  {
-     
-     for (User u: Users)
-     {
-       if(u.getUserId().equals(user.getUserId())){
-           System.out.println("User with Id"+user.getUserId()+"already exits");
-           return false;
-     }
-      
-     }
-     Users.add(user);
-     SaveUserToFile(Users);
-     return true;
-     
-     }
-     public void updateStatus(String userId,boolean status)
-     {   User user=getUserById(userId);
-         if(user!=null){
-             user.setStatus(status);
-             SaveUserToFile(Users);
-         }
-         else System.out.println("User Id not found");
-         
-     }
-     public User getUserById(String userId)
-     {
-     for(User u:Users)
-     {
-     if(u.getUserId().equals(userId))
-         return u;
-     } 
-     
-      return null;
-     }
-    
-    public User getUserByEmail(String email){
-      for(User u:Users)  
-      {
-          if (u.getEmail().equals(email))
-              return u;
-          
+        return Users;
     }
-      return null;
+
+    public boolean AddUser(User user) {
+
+        for (User u : Users) {
+            if (u.getUserId().equals(user.getUserId())) {
+                System.out.println("User with Id" + user.getUserId() + "already exits");
+                return false;
+            }
+
+        }
+        Users.add(user);
+        SaveUserToFile(Users);
+        return true;
+
+    }
+
+    public void updateStatus(String userId, boolean status) {
+        User user = getUserById(userId);
+        if (user != null) {
+            user.setStatus(status);
+            SaveUserToFile(Users);
+        } else {
+            System.out.println("User Id not found");
+        }
+
+    }
+
+    public User getUserById(String userId) {
+        for (User u : Users) {
+            if (u.getUserId().equals(userId)) {
+                return u;
+            }
+        }
+
+        return null;
+    }
+
+    public User getUserByEmail(String email) {
+        for (User u : Users) {
+            if (u.getEmail().equals(email)) {
+                return u;
+            }
+
+        }
+        return null;
     }
 }
