@@ -38,7 +38,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="profilePictureLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="profilePhotoLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="changePasswordLabel" min="-2" pref="114" max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="profilePictureLabel" min="-2" pref="190" max="-2" attributes="0"/>
+                      <Component id="profilePhotoLabel" min="-2" pref="190" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnUploadProfilePhoto" min="-2" pref="29" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -110,7 +110,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="profilePictureLabel">
+    <Component class="javax.swing.JLabel" name="profilePhotoLabel">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/ProfileManagmentFrontend/defaultProfilePhoto.jpeg"/>

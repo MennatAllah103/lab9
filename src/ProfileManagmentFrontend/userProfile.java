@@ -3,13 +3,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package ProfileManagmentFrontend;
+
 import ProfileManagementBackend.ProfileManager;
+import java.awt.Image;
+import java.io.File;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author hp
  */
 public class userProfile extends javax.swing.JFrame {
+
     ProfileManager manager;
 
     /**
@@ -29,7 +39,7 @@ public class userProfile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        profilePictureLabel = new javax.swing.JLabel();
+        profilePhotoLabel = new javax.swing.JLabel();
         coverPhotoLabel = new javax.swing.JLabel();
         btnUploadProfilePhoto = new javax.swing.JButton();
         btnUploadCoverPhoto = new javax.swing.JButton();
@@ -46,7 +56,7 @@ public class userProfile extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        profilePictureLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProfileManagmentFrontend/defaultProfilePhoto.jpeg"))); // NOI18N
+        profilePhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProfileManagmentFrontend/defaultProfilePhoto.jpeg"))); // NOI18N
 
         coverPhotoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProfileManagmentFrontend/defaultCoverPhoto.jpg"))); // NOI18N
 
@@ -110,7 +120,7 @@ public class userProfile extends javax.swing.JFrame {
                             .addGap(23, 23, 23))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(23, 23, 23)
-                            .addComponent(profilePictureLabel)))
+                            .addComponent(profilePhotoLabel)))
                     .addComponent(changePasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profilePasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -149,7 +159,7 @@ public class userProfile extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(profilePictureLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(profilePhotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnUploadProfilePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -167,41 +177,51 @@ public class userProfile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUploadProfilePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadProfilePhotoActionPerformed
-//        JFileChooser fileChooser = new JFileChooser();
-//        int result = fileChooser.showOpenDialog(this);
-//        if (result == JFileChooser.APPROVE_OPTION) {
-//            File file = fileChooser.getSelectedFile();
-//            String filePath = file.getAbsolutePath();
-//
-//    
-//            ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
-//            label.setIcon(icon);
-
-//
-//         
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            String filePath = file.getAbsolutePath();
+            ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+            profilePhotoLabel.setIcon(icon);
+            manager.updatePhoto(filePath, "profile");
+        }
 
     }//GEN-LAST:event_btnUploadProfilePhotoActionPerformed
 
     private void btnSaveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveProfileActionPerformed
-//        String bio = bioTextArea.getText();
-//        String password = new String(profilePasswordField.getPassword());
-//
-//        user.setUsername(username);
-//        user.setBio(bio);
-//
-//        if (!password.isEmpty()) {
-//            user.setPassword(hashPassword(password)); // Ensure passwords are hashed
-//        }
-//
-//      
-//        database.saveUser(user); // from profile manager do this
-//
-//        JOptionPane.showMessageDialog(this, "Profile updated successfully!");
-    
+        String bio = bioTextArea.getText();
+        String password = new String(profilePasswordField.getPassword());
+        int flag = 0;
+        if (!bio.isEmpty()) {
+            manager.updateBio(bio);
+            flag = 1;
+        }
+        if (!password.isEmpty()) {
+            try {
+                manager.updatePassword(password);
+                 flag = 1;
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(userProfile.class.getName()).log(Level.SEVERE, null, ex);
+            }
+           
+        }
+        if (flag == 1) {
+            JOptionPane.showMessageDialog(this, "Profile updated successfully!");
+        }
+
     }//GEN-LAST:event_btnSaveProfileActionPerformed
 
     private void btnUploadCoverPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadCoverPhotoActionPerformed
-        
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            String filePath = file.getAbsolutePath();
+            ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+            coverPhotoLabel.setIcon(icon);
+            manager.updatePhoto(filePath, "cover");
+        }
     }//GEN-LAST:event_btnUploadCoverPhotoActionPerformed
 
 
@@ -219,6 +239,6 @@ public class userProfile extends javax.swing.JFrame {
     private javax.swing.JPanel postsJPanel;
     private javax.swing.JScrollPane postsScrollPane;
     private javax.swing.JPasswordField profilePasswordField;
-    private javax.swing.JLabel profilePictureLabel;
+    private javax.swing.JLabel profilePhotoLabel;
     // End of variables declaration//GEN-END:variables
 }
