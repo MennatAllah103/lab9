@@ -1,0 +1,68 @@
+[
+    {
+        "password": "lzzNWNwv5SWehPbp50OSW1ZJKb/gaXvqc8FedVt1G2E=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-03",
+        "userId": "1fd7d48f-5798-4a85-b113-7dbcc64fcbc5",
+        "email": "menna@gmail.com",
+        "username": "menna",
+        "status": "offline"
+    },
+    {
+        "password": "WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-03",
+        "userId": "b85ef99e-c0be-42d2-8ae0-3fa519f00e37",
+        "email": "salma@gmail.com",
+        "username": "salma",
+        "status": "offline"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-03",
+        "userId": "e874bd03-3cc7-461f-8409-d374d22e077d",
+        "email": "dareen@gmail.com",
+        "username": "dareen",
+        "status": "offline"
+    },
+    {
+        "password": "WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-03",
+        "userId": "0bf86395-e1c3-44a0-aa15-106694f3d5ee",
+        "email": "yara@gmail.com",
+        "username": "yara",
+        "status": "offline"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-03",
+        "userId": "8d7b0a45-a057-43d2-b789-d01a9d9998ab",
+        "email": "fai@gmail.com",
+        "username": "fai",
+        "status": "offline"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-03",
+        "userId": "a036341b-33bc-47f3-94f2-3c350504e6c2",
+        "email": "farah@gmail.com",
+        "username": "farah",
+        "status": "offline"
+    }
+]
