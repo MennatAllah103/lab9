@@ -72,6 +72,7 @@ public class UserSignup extends javax.swing.JFrame {
             }
         });
 
+        signup.setBackground(new java.awt.Color(255, 204, 255));
         signup.setText("SignUp");
         signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
