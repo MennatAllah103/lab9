@@ -5,6 +5,7 @@
 package UserManagementBackend;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 /**
  *
@@ -18,14 +19,20 @@ public class User {
     private String password;
     private boolean status;
     private String username;
+    private String profilePhoto;
+    private String coverPhoto;
+    private String bio;
 
-    public User( String email, LocalDate dateOfBirth, String password,String username) {
-        //userId =
+    public User(String email, LocalDate dateOfBirth, String password, String username) {
+        this.userId=UUID.randomUUID().toString();
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.password = password;
-       // this.status=status;
+        this.status=status;
         this.username=username;
+        this.profilePhoto = "defaultProfilePhoto.jpg";
+        this.coverPhoto = "defaultCoverPhoto.jpg";
+        this.bio = "";
     }
     public String getEmail() {
         return email;
@@ -73,9 +80,29 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
-    
-    
-    
+ 
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
 
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
+    }
+
+    public String getCoverPhoto() {
+        return coverPhoto;
+    }
+   
+    public void setCoverPhoto(String coverPhoto) {
+        this.coverPhoto = coverPhoto;
+    }
+ 
+    public String getBio() {
+        return bio;
+    }
+ 
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
     
 }

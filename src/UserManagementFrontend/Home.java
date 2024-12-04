@@ -4,12 +4,16 @@
  */
 package UserManagementFrontend;
 
+import UserManagementBackend.UserDataBase;
+import UserManagementBackend.UserLog;
+
 /**
  *
  * @author daree
  */
 public class Home extends javax.swing.JFrame {
-
+        UserLog log=new UserLog(UserDataBase.getDatabase());
+        UserLogin logging=new UserLogin(this,log);
     /**
      * Creates new form Home
      */
@@ -84,7 +88,7 @@ public class Home extends javax.swing.JFrame {
 
     private void signupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupActionPerformed
         // TODO add your handling code here:
-        UserSignup userSignupframe = new UserSignup(this);
+        UserSignup userSignupframe = new UserSignup(this,log,logging);
          userSignupframe.setVisible(true);
          setVisible(false);
         
@@ -94,7 +98,7 @@ public class Home extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-         UserLogin userloginframe = new UserLogin(this);
+         UserLogin userloginframe = new UserLogin(this,log);
          userloginframe.setVisible(true);
          setVisible(false);
         

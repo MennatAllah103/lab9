@@ -17,13 +17,21 @@ import org.json.JSONObject;
 
 public class UserDataBase {
 
-    private ArrayList<User> Users = new ArrayList<>();
+    private static ArrayList<User> Users = new ArrayList<>();
+    public static UserDataBase database=null;
 
-    public UserDataBase() {
+    private UserDataBase() {
        
         Users = ReadUserFromFile();
 
     }
+     public static UserDataBase getDatabase()
+     {
+       if(database==null)
+           database=new UserDataBase();
+          
+           return database;
+     }
 
     public static void SaveUserToFile(ArrayList<User> user) {
         JSONArray usersArray = new JSONArray();
@@ -34,7 +42,11 @@ public class UserDataBase {
             j.put("dateOfBirth", u.getDateOfBirth());
             j.put("password", u.getPassword());
             j.put("username", u.getUsername());
-            j.put("status", u.getStatus());
+            j.put("status", u.getStatus() ? "online" : "offline");
+            j.put("profilePhoto", u.getProfilePhoto());
+            j.put("coverPhoto", u.getCoverPhoto());
+            j.put("bio", u.getBio());
+            
             usersArray.put(j);
         }
         try {
@@ -59,8 +71,17 @@ public class UserDataBase {
                 LocalDate date = LocalDate.parse(userJson.getString("dateOfBirth"), formatter);
                 String password = userJson.getString("password");
                 String username = userJson.getString("username");
-                boolean status = userJson.getBoolean("status");
-                users.add(new User( email, date, password, username));
+                String status = userJson.getString("status");
+                String profilePhoto = userJson.optString("profilePhoto", "defaultProfilePhoto.jpg");
+                String coverPhoto = userJson.optString("coverPhoto", "defaultCoverPhoto.jpg");
+                String bio = userJson.optString("bio","");
+                User u=new User( email, date, password, username);
+                u.setStatus(status.equals("online"));
+                u.setProfilePhoto(profilePhoto);
+                u.setCoverPhoto(coverPhoto);
+                u.setBio(bio);
+                u.setUserId(id);
+                users.add(u);
             }
 
         } catch (IOException e) {
@@ -68,23 +89,40 @@ public class UserDataBase {
         } catch (JSONException e) {
             System.err.println("Error parsing JSON data: " + e.getMessage());
         }
-        return Users;
+        return users;
     }
 
-    public boolean AddUser(User user) {
+  public boolean addUser(User user) {
+    // Ensure the current users are loaded from the file (if not already loaded)
+    if (Users.isEmpty()) {
+        Users = ReadUserFromFile();
+    }
 
-        for (User u : Users) {
-            if (u.getUserId().equals(user.getUserId())) {
-                System.out.println("User with Id" + user.getUserId() + "already exits");
-                return false;
-            }
-
+    // Check if the email is already registered
+    for (User existingUser : Users) {
+        if (existingUser.getEmail().equals(user.getEmail())) {
+            System.err.println("Email already registered.");
+            return false;
         }
-        Users.add(user);
-        SaveUserToFile(Users);
-        return true;
-
     }
+    
+     for (User existingUser : Users) {
+        if (existingUser.getUsername().equals(user.getUsername())) {
+            System.err.println("Username already registered.");
+            return false;
+        }
+    }
+    
+    
+    
+    
+
+    // Add the new user and save the list to the file
+    Users.add(user);
+    SaveUserToFile(Users);
+    return true;
+}
+
 
     public void updateStatus(String userId, boolean status) {
         User user = getUserById(userId);

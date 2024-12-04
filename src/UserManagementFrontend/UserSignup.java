@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UserManagementFrontend;
-
+import UserManagementBackend.UserDataBase;
 import UserManagementBackend.UserLog;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -15,14 +15,17 @@ import javax.swing.JOptionPane;
  */
 public class UserSignup extends javax.swing.JFrame {
     
-    Home home;
-
+     Home home;
+     UserLog log=new UserLog(UserDataBase.getDatabase());
+     UserLogin login;
     /**
      * Creates new form UserSignup
      */
-    public UserSignup(Home home) {
+    public UserSignup(Home home,UserLog log,UserLogin login) {
         initComponents();
         this.home=home;
+        this.log=log;
+        this.login=login;
     }
 
     /**
@@ -47,6 +50,7 @@ public class UserSignup extends javax.swing.JFrame {
         textdate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sign Up");
 
         jLabel1.setText("Enter Email");
 
@@ -162,27 +166,47 @@ public class UserSignup extends javax.swing.JFrame {
         String password=passwordtext.getText();
          String username=usernametext.getText();
         LocalDate date = null;
-         if (username.isEmpty() || password.isEmpty()||email.isEmpty()||confirmpass.isEmpty()) {
-         JOptionPane.showMessageDialog(this, "Some Fields are empty !", "Message", JOptionPane.ERROR_MESSAGE);
-         return;
-        } 
-       boolean validemail=UserLog.isValidEmail(email);
-       if(!validemail){
-          JOptionPane.showMessageDialog(this, "Invalid email format", "Message", JOptionPane.ERROR_MESSAGE);
-          return;
-       }
-        boolean validpass=UserLog.isValidPassword(password, confirmpass);
-        if(!validpass){
-             JOptionPane.showMessageDialog(this, "Passwords do not match", "Message", JOptionPane.ERROR_MESSAGE);
-        }
-       
-      try {
+      // Check if any field is empty
+    if (username.isEmpty() || password.isEmpty() || email.isEmpty() || confirmpass.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Some Fields are empty!", "Message", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validate email format
+    boolean validEmail = UserLog.isValidEmail(email);
+    if (!validEmail) {
+        JOptionPane.showMessageDialog(this, "Invalid email format", "Message", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validate password match
+    boolean validPassword = UserLog.isValidPassword(password, confirmpass);
+    if (!validPassword) {
+        JOptionPane.showMessageDialog(this, "Passwords do not match", "Message", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Attempt to parse the date of birth
+    try {
         date = textdate.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     } catch (NullPointerException e) {
         JOptionPane.showMessageDialog(this, "Please select a valid date of birth.", "Error", JOptionPane.ERROR_MESSAGE);
         return;
-    }  
-        
+    }
+
+    // Attempt to create a new user and handle signup logic
+    boolean signupSuccess = log.signup(email, password, date, username);
+    if (signupSuccess) {
+        JOptionPane.showMessageDialog(this, "Signup successful!", "Message", JOptionPane.INFORMATION_MESSAGE);
+        // Navigate to next screen or take other actions
+    } else {
+        JOptionPane.showMessageDialog(this, "Signup failed! Email or username might already be in use.", "Message", JOptionPane.ERROR_MESSAGE);
+    } 
+    
+      this.dispose();
+      login.setVisible(true);
+      
+      
     }//GEN-LAST:event_signupActionPerformed
 
     private void passwordtextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordtextActionPerformed

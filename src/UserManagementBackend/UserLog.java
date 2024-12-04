@@ -4,7 +4,11 @@
  */
 package UserManagementBackend;
 
+
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
+import java.util.UUID;
+
 
 
 /**
@@ -21,17 +25,40 @@ public class UserLog {
         this.database = database;
     }
 
-    public boolean signup(String email, String password, LocalDate dateOfBirth, String Username) {
-
-        User user = new User(email, dateOfBirth, password, Username);
-        boolean AddUser = database.AddUser(user);
-        if (AddUser) {
-            return true;
-        } else {
+   public boolean signup(String email, String password, LocalDate dateOfBirth, String username) {
+    try {
+        // Check if email is already registered (assuming a method exists for this)
+        if (database.getUserByEmail(email) != null) {
+            // Email already exists in the database
+          
             return false;
         }
-    }
 
+        // Hash the password
+        String hashedPassword = PasswordHashing.hashPassword(password);
+
+        // Generate a unique user ID (for example, using UUID)
+        String userId = UUID.randomUUID().toString();
+
+        // Create a new User object
+        User user = new User( email, dateOfBirth, hashedPassword, username);
+        user.setUserId(userId);
+
+        // Attempt to add the user to the database
+        boolean addUser = database.addUser(user);
+
+        // Return whether the user was successfully added
+        return addUser;
+
+    } catch (NoSuchAlgorithmException e) {
+        e.printStackTrace();
+       
+        return false;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return false;
+    }
+   }
     public static boolean isValidEmail(String email) {
         // Check if the email is null
         if (email == null) {
@@ -91,5 +118,46 @@ public class UserLog {
             return true;
         return false;
     }
+    
+ 
+ public User login(String email, String password, String username) {
+    try {
+        User user = database.getUserByEmail(email);    
+        if (user == null) {
+            
+            return null;
+        }
+        
+        if (!user.getUsername().equals(username)) {
+            
+            return null;
+        }
+        
+        if (!PasswordHashing.validatePassword(password, user.getPassword())) {
+          
+            return null;
+        }
+        
+        
+        return user;
+    } catch (NoSuchAlgorithmException e) {
+        System.err.println("Error hashing password: " + e.getMessage());
+        e.printStackTrace();
+        return null;
+    } catch (Exception e) {
+        System.err.println("An unexpected error occurred: " + e.getMessage());
+        e.printStackTrace();
+        return null;
+    }
+}
 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 }

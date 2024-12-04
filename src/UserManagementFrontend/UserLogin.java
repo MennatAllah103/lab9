@@ -4,7 +4,10 @@
  */
 package UserManagementFrontend;
 
+import UserManagementBackend.User;
 import UserManagementBackend.UserLog;
+import UserManagementBackend.UserDataBase;
+import javax.swing.JOptionPane;
 
 
 
@@ -15,12 +18,15 @@ import UserManagementBackend.UserLog;
 public class UserLogin extends javax.swing.JFrame {
 
     Home home;
+    UserLog log=new UserLog(UserDataBase.getDatabase());
     /**
      * Creates new form UserLogin
      */
-    public UserLogin(Home home) {
+    public UserLogin(Home home,UserLog log) {
         initComponents();
         this.home=home;
+        this.log=log;
+        
     }
 
     /**
@@ -38,9 +44,10 @@ public class UserLogin extends javax.swing.JFrame {
         Email = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         login = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        password = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Log in");
 
         jLabel1.setText("Enter Username");
 
@@ -81,7 +88,7 @@ public class UserLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Username, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68))
             .addGroup(layout.createSequentialGroup()
                 .addGap(104, 104, 104)
@@ -104,7 +111,7 @@ public class UserLogin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(login)
                 .addContainerGap(51, Short.MAX_VALUE))
@@ -127,8 +134,41 @@ public class UserLogin extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        String email=Email.getText();
-        boolean validEmail = UserLog.isValidEmail(email);
+       // Retrieve user inputs
+    String email = Email.getText();
+    String username = Username.getText();
+    String pass = password.getText();
+
+    // Check if any field is empty
+    if (email.isEmpty() || username.isEmpty() || pass.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Some fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validate email format
+    if (!UserLog.isValidEmail(email)) {
+        JOptionPane.showMessageDialog(this, "Invalid email format!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Attempt login
+    User u = log.login(email, pass, username);
+    if (u == null) {
+        JOptionPane.showMessageDialog(this, "Login failed! Invalid credentials.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Validate username (additional safety check)
+    if (!u.getUsername().equals(username)) {
+        JOptionPane.showMessageDialog(this, "Wrong username for this password!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    // Successful login
+    JOptionPane.showMessageDialog(this, "Login successful! Welcome, " + username + ".", "Success", JOptionPane.INFORMATION_MESSAGE);
+    // You can add navigation to the next screen or action here
+        
+        
         
     }//GEN-LAST:event_loginActionPerformed
 
@@ -139,7 +179,7 @@ public class UserLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JButton login;
+    private javax.swing.JPasswordField password;
     // End of variables declaration//GEN-END:variables
 }
