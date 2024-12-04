@@ -28,5 +28,9 @@ public class FriendsManagement {
        FriendsDB.saveFile(friendsarray);
     }
     
+    //suggest friends who are not already in the user's friend list.
     
-}
+  
+
+    }
+

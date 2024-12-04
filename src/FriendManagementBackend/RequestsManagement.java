@@ -43,7 +43,7 @@ public class RequestsManagement {
       
     }
     
-    public void refuserequest(Requests R)
+    public void declinerequest(Requests R)
     {
           deleterequest(R);
     }
