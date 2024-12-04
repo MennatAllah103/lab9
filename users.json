@@ -53,5 +53,16 @@
         "email": "fai@gmail.com",
         "username": "fai",
         "status": "offline"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-03",
+        "userId": "a036341b-33bc-47f3-94f2-3c350504e6c2",
+        "email": "farah@gmail.com",
+        "username": "farah",
+        "status": "offline"
     }
 ]
