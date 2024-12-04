@@ -47,7 +47,7 @@ public class UserDataBase {
     }
 
     public ArrayList<User> ReadUserFromFile() {
-         Users.clear();
+         ArrayList<User> users=new ArrayList<>(); 
         try {
             String json = new String(Files.readAllBytes(Paths.get("users.json")));
             JSONArray usersArray = new JSONArray(json);
@@ -60,7 +60,7 @@ public class UserDataBase {
                 String password = userJson.getString("password");
                 String username = userJson.getString("username");
                 boolean status = userJson.getBoolean("status");
-                Users.add(new User( email, date, password, username));
+                users.add(new User( email, date, password, username));
             }
 
         } catch (IOException e) {

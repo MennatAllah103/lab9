@@ -5,7 +5,7 @@
 package UserManagementBackend;
 
 import java.time.LocalDate;
-import java.util.Scanner;
+
 
 /**
  *
@@ -13,11 +13,11 @@ import java.util.Scanner;
  */
 public class UserLog {
 
-    User user;
+    
     UserDataBase database;
 
     public UserLog(UserDataBase database) {
-        // this.user = user;
+       
         this.database = database;
     }
 
@@ -84,6 +84,12 @@ public class UserLog {
         }
 
         return true;  // Valid email
+    }
+    public static boolean isValidPassword (String password,String Confirm)
+    {
+        if(password.equals(Confirm))
+            return true;
+        return false;
     }
 
 }
