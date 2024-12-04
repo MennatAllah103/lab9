@@ -10,4 +10,21 @@ package FriendManagementBackend;
  */
 public class Friends {
     
+    String Userid1;
+    String Userid2;
+
+    public Friends(String Userid1, String Userid2) {
+        this.Userid1 = Userid1;
+        this.Userid2 = Userid2;
+    }
+   
+
+    public void setUserid1(String Userid1) {
+        this.Userid1 = Userid1;
+    }
+
+    public void setUserid2(String Userid2) {
+        this.Userid2 = Userid2;
+    }
+    
 }
