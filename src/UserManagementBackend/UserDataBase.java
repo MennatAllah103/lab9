@@ -19,6 +19,8 @@ public class UserDataBase {
 
     private static ArrayList<User> Users = new ArrayList<>();
     public static UserDataBase database=null;
+    private static User currentUser;  // Static field to track the current logged-in user
+
 
     private UserDataBase() {
        
@@ -112,12 +114,7 @@ public class UserDataBase {
             return false;
         }
     }
-    
-    
-    
-    
 
-    // Add the new user and save the list to the file
     Users.add(user);
     SaveUserToFile(Users);
     return true;
@@ -154,4 +151,12 @@ public class UserDataBase {
         }
         return null;
     }
+    public static void setCurrentUser(User user) {
+        currentUser = user;
+    }
+
+    // Get the current logged-in user
+    public static User getCurrentUser() {
+        return currentUser;
+    } 
 }
