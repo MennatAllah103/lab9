@@ -64,5 +64,38 @@
         "email": "farah@gmail.com",
         "username": "farah",
         "status": "offline"
+    },
+    {
+        "password": "WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-03",
+        "userId": "add54bfa-55fa-4846-8cc8-35d433d9cfc4",
+        "email": "mohamed@gmail.com",
+        "username": "mohamed",
+        "status": "offline"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-03",
+        "userId": "10abe923-4746-4a0d-a8da-abff9c19640b",
+        "email": "ahmed@gmail.com",
+        "username": "ahmed",
+        "status": "offline"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-03",
+        "userId": "ed5cd9c1-ed25-4450-b22b-4130bd91c6e9",
+        "email": "ali@gmail.com",
+        "username": "ali",
+        "status": "offline"
     }
 ]

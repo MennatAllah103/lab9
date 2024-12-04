@@ -22,12 +22,11 @@ public class UserLogin extends javax.swing.JFrame {
     /**
      * Creates new form UserLogin
      */
-    public UserLogin(Home home,UserLog log) {
-        initComponents();
-        this.home=home;
-        this.log=log;
-        
-    }
+ public UserLogin(UserLog log,Home home) {
+    initComponents();
+    this.home = Home.getInstance(); // Use the Singleton instance of Home
+    this.log = log;
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
