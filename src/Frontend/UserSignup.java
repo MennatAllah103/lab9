@@ -18,14 +18,17 @@ public class UserSignup extends javax.swing.JFrame {
      Home home;
      UserLog log=new UserLog(UserDataBase.getDatabase());
      UserLogin login;
+    
+ 
+
     /**
      * Creates new form UserSignup
      */
-    public UserSignup(Home home,UserLog log,UserLogin login) {
+    public UserSignup(UserLog log,UserLogin login,Home home) {
         initComponents();
-        this.home=home;
-        this.log=log;
-        this.login=login;
+        this.home = Home.getInstance(); // Ensure Home is a singleton and get its instance
+        this.log = log;
+        this.login = login;
     }
 
     /**
@@ -205,6 +208,7 @@ public class UserSignup extends javax.swing.JFrame {
     } 
     
       this.dispose();
+       UserLogin login=new UserLogin(log,home);
       login.setVisible(true);
       
       
