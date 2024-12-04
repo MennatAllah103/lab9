@@ -30,19 +30,16 @@ public class UserLog {
         // Check if email is already registered (assuming a method exists for this)
         if (database.getUserByEmail(email) != null) {
             // Email already exists in the database
-          
             return false;
         }
 
         // Hash the password
         String hashedPassword = PasswordHashing.hashPassword(password);
 
-        // Generate a unique user ID (for example, using UUID)
-        String userId = UUID.randomUUID().toString();
-
-        // Create a new User object
-        User user = new User( email, dateOfBirth, hashedPassword, username);
-        user.setUserId(userId);
+        // Create a new User object using the builder pattern
+        User user = new User.Builder(email, dateOfBirth, hashedPassword, username)
+                        .status(false)  // Default to 'offline' status (you can change it as needed)
+                        .build();
 
         // Attempt to add the user to the database
         boolean addUser = database.addUser(user);
@@ -52,13 +49,14 @@ public class UserLog {
 
     } catch (NoSuchAlgorithmException e) {
         e.printStackTrace();
-       
         return false;
     } catch (Exception e) {
         e.printStackTrace();
         return false;
     }
-   }
+}
+
+   
     public static boolean isValidEmail(String email) {
         // Check if the email is null
         if (email == null) {

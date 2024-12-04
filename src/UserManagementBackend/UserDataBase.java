@@ -77,13 +77,16 @@ public class UserDataBase {
                 String profilePhoto = userJson.optString("profilePhoto", "defaultProfilePhoto.jpg");
                 String coverPhoto = userJson.optString("coverPhoto", "defaultCoverPhoto.jpg");
                 String bio = userJson.optString("bio","");
-                User u=new User( email, date, password, username);
-                u.setStatus(status.equals("online"));
-                u.setProfilePhoto(profilePhoto);
-                u.setCoverPhoto(coverPhoto);
-                u.setBio(bio);
-                u.setUserId(id);
-                users.add(u);
+                // Use Builder to create User instance
+            User user = new User.Builder(email, date, password, username)
+                    .status(status.equals("online"))
+                    .profilePhoto(profilePhoto)
+                    .coverPhoto(coverPhoto)
+                    .bio(bio)
+                    .build();
+
+            user.setUserId(id); // Set the userId separately as it's generated in the Builder
+            users.add(user);
             }
 
         } catch (IOException e) {
