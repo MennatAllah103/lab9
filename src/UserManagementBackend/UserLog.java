@@ -149,13 +149,13 @@ public class UserLog {
     }
 }
 
-
+public void logout(User user){
+    database.updateStatus(user.getUserId(), false);
  
  
  
  
- 
- 
+}
  
  
 }
