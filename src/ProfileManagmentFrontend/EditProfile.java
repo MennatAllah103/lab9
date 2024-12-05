@@ -22,12 +22,14 @@ import javax.swing.JOptionPane;
 public class EditProfile extends javax.swing.JFrame {
 
     ProfileManager manager;
+    ViewProfile v;
 
     /**
      * Creates new form Profile
      */
-    public EditProfile() {
+    public EditProfile(ViewProfile v) {
         initComponents();
+        this.v = v;
         manager = new ProfileManager();
         String username = UserDataBase.getCurrentUser().getUsername();
         usernameLabel.setText(username);
@@ -47,7 +49,7 @@ public class EditProfile extends javax.swing.JFrame {
         btnUploadProfilePhoto = new javax.swing.JButton();
         btnUploadCoverPhoto = new javax.swing.JButton();
         bioLabel = new javax.swing.JLabel();
-        btnSaveProfile = new javax.swing.JButton();
+        btnSaveBio = new javax.swing.JButton();
         bioScrollPane = new javax.swing.JScrollPane();
         bioTextArea = new javax.swing.JTextArea();
         btnChangePassword = new javax.swing.JButton();
@@ -81,12 +83,12 @@ public class EditProfile extends javax.swing.JFrame {
         bioLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bioLabel.setText("Bio");
 
-        btnSaveProfile.setBackground(new java.awt.Color(255, 204, 255));
-        btnSaveProfile.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnSaveProfile.setText(" Save Bio");
-        btnSaveProfile.addActionListener(new java.awt.event.ActionListener() {
+        btnSaveBio.setBackground(new java.awt.Color(255, 204, 255));
+        btnSaveBio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSaveBio.setText(" Save Bio");
+        btnSaveBio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveProfileActionPerformed(evt);
+                btnSaveBioActionPerformed(evt);
             }
         });
 
@@ -105,7 +107,7 @@ public class EditProfile extends javax.swing.JFrame {
 
         exitbutton.setBackground(new java.awt.Color(255, 204, 255));
         exitbutton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        exitbutton.setText("Exit");
+        exitbutton.setText("Back");
         exitbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitbuttonActionPerformed(evt);
@@ -139,13 +141,12 @@ public class EditProfile extends javax.swing.JFrame {
                         .addComponent(btnUploadProfilePhoto))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSaveProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(exitbutton)
-                                .addGap(216, 216, 216)))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnSaveBio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnChangePassword, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(exitbutton)
+                        .addGap(216, 216, 216)))
                 .addContainerGap(122, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -163,8 +164,8 @@ public class EditProfile extends javax.swing.JFrame {
                         .addComponent(bioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(bioScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSaveProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSaveBio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                         .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))
@@ -195,7 +196,7 @@ public class EditProfile extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnUploadProfilePhotoActionPerformed
 
-    private void btnSaveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveProfileActionPerformed
+    private void btnSaveBioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveBioActionPerformed
         String bio = bioTextArea.getText();
         String oldBio = UserDataBase.getCurrentUser().getBio();
         if (bio.isEmpty() || bio.equals(oldBio)) {
@@ -206,7 +207,7 @@ public class EditProfile extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Profile updated successfully!");
 
 
-    }//GEN-LAST:event_btnSaveProfileActionPerformed
+    }//GEN-LAST:event_btnSaveBioActionPerformed
 
     private void btnUploadCoverPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadCoverPhotoActionPerformed
         JFileChooser fileChooser = new JFileChooser();
@@ -230,6 +231,8 @@ public class EditProfile extends javax.swing.JFrame {
     private void exitbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitbuttonActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
+        v.setVisible(true);
+        
     }//GEN-LAST:event_exitbuttonActionPerformed
 
 
@@ -238,7 +241,7 @@ public class EditProfile extends javax.swing.JFrame {
     private javax.swing.JScrollPane bioScrollPane;
     private javax.swing.JTextArea bioTextArea;
     private javax.swing.JButton btnChangePassword;
-    private javax.swing.JButton btnSaveProfile;
+    private javax.swing.JButton btnSaveBio;
     private javax.swing.JButton btnUploadCoverPhoto;
     private javax.swing.JButton btnUploadProfilePhoto;
     private javax.swing.JLabel coverPhotoLabel;

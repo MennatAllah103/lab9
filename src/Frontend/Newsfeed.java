@@ -34,25 +34,29 @@ public class Newsfeed extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        visitProfile = new javax.swing.JButton();
+        btnVisitProfile = new javax.swing.JButton();
         ManageFriends = new javax.swing.JButton();
         logout = new javax.swing.JButton();
+        newsfeedLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("News Feed");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Newsfeed");
 
-        visitProfile.setBackground(new java.awt.Color(255, 204, 255));
-        visitProfile.setText("Visit Profile");
-        visitProfile.addActionListener(new java.awt.event.ActionListener() {
+        btnVisitProfile.setBackground(new java.awt.Color(255, 204, 255));
+        btnVisitProfile.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVisitProfile.setText("Visit Profile");
+        btnVisitProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                visitProfileActionPerformed(evt);
+                btnVisitProfileActionPerformed(evt);
             }
         });
 
         ManageFriends.setBackground(new java.awt.Color(255, 204, 255));
+        ManageFriends.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ManageFriends.setText("Manage Friends");
 
         logout.setBackground(new java.awt.Color(255, 204, 255));
+        logout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         logout.setText("Log Out");
         logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,41 +64,47 @@ public class Newsfeed extends javax.swing.JFrame {
             }
         });
 
+        newsfeedLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        newsfeedLabel.setText("Newsfeed");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logout)
-                    .addComponent(ManageFriends)
-                    .addComponent(visitProfile))
-                .addGap(36, 36, 36))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(ManageFriends)
+                        .addGap(163, 163, 163)
+                        .addComponent(btnVisitProfile))
+                    .addComponent(newsfeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                .addComponent(logout)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(visitProfile)
-                .addGap(32, 32, 32)
-                .addComponent(ManageFriends)
-                .addGap(32, 32, 32)
-                .addComponent(logout)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
+                .addComponent(newsfeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ManageFriends)
+                    .addComponent(btnVisitProfile)
+                    .addComponent(logout))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void visitProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visitProfileActionPerformed
+    private void btnVisitProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitProfileActionPerformed
         // TODO add your handling code here:
-        ViewProfile profile=new ViewProfile();
+        ViewProfile profile = new ViewProfile(this);
         profile.setVisible(true);
-        
-        
-        
-    }//GEN-LAST:event_visitProfileActionPerformed
+    }//GEN-LAST:event_btnVisitProfileActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         // TODO add your handling code here:
@@ -111,7 +121,8 @@ public class Newsfeed extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ManageFriends;
+    private javax.swing.JButton btnVisitProfile;
     private javax.swing.JButton logout;
-    private javax.swing.JButton visitProfile;
+    private javax.swing.JLabel newsfeedLabel;
     // End of variables declaration//GEN-END:variables
 }
