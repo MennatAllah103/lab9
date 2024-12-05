@@ -158,17 +158,18 @@ public class UserLogin extends javax.swing.JFrame {
         return;
     }
 
-    // Validate username (additional safety check)
+    // Validate username
     if (!u.getUsername().equals(username)) {
         JOptionPane.showMessageDialog(this, "Wrong username for this password!", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
       UserDataBase.setCurrentUser(u);
-    // Successful login
+  
     JOptionPane.showMessageDialog(this, "Login successful! Welcome, " + username + ".", "Success", JOptionPane.INFORMATION_MESSAGE);
-    // You can add navigation to the next screen or action here
-        
-        
+ 
+        Newsfeed news=new Newsfeed();
+        news.setVisible(true);
+        this.setVisible(false);
         
     }//GEN-LAST:event_loginActionPerformed
 

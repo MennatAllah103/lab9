@@ -117,6 +117,14 @@ public class UserLog {
         return false;
     }
     
+   public void logOut(User user) {
+    
+    database.updateStatus(user.getUserId(), false);
+    
+  
+   }
+    
+    
  
  public User login(String email, String password, String username) {
     try {
@@ -147,6 +155,12 @@ public class UserLog {
         e.printStackTrace();
         return null;
     }
+   
+
+    
+    
+ 
+   
 }
 
 
