@@ -77,7 +77,7 @@ public class UserDataBase {
                 String profilePhoto = userJson.optString("profilePhoto", "defaultProfilePhoto.jpg");
                 String coverPhoto = userJson.optString("coverPhoto", "defaultCoverPhoto.jpg");
                 String bio = userJson.optString("bio","");
-                // Use Builder to create User instance
+                // Use Builder to create User
             User user = new User.Builder(email, date, password, username)
                     .status(status.equals("online"))
                     .profilePhoto(profilePhoto)
@@ -98,7 +98,7 @@ public class UserDataBase {
     }
 
   public boolean addUser(User user) {
-    // Ensure the current users are loaded from the file (if not already loaded)
+    
     if (Users.isEmpty()) {
         Users = ReadUserFromFile();
     }
@@ -124,16 +124,16 @@ public class UserDataBase {
 }
 
 
-    public void updateStatus(String userId, boolean status) {
-        User user = getUserById(userId);
-        if (user != null) {
+public void updateStatus(String userId, boolean status) {
+    for (User user : Users) { 
+        if (user.getUserId().equals(userId)) {
             user.setStatus(status);
-            SaveUserToFile(Users);
-        } else {
-            System.out.println("User Id not found");
+            SaveUserToFile(Users); 
+            return; 
         }
-
     }
+    System.out.println("User Id not found");
+}
 
     public User getUserById(String userId) {
         for (User u : Users) {
@@ -158,7 +158,7 @@ public class UserDataBase {
         currentUser = user;
     }
 
-    // Get the current logged-in user
+    
     public static User getCurrentUser() {
         return currentUser;
     } 

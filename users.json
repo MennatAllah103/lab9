@@ -96,6 +96,17 @@
         "userId": "ed5cd9c1-ed25-4450-b22b-4130bd91c6e9",
         "email": "ali@gmail.com",
         "username": "ali",
-        "status": "offline"
+        "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-04",
+        "userId": "a797c1b2-d61d-479d-a66b-2129b1080819",
+        "email": "arwa@gmail.com",
+        "username": "arwa",
+        "status": "online"
     }
 ]
