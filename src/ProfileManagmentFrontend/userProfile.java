@@ -90,7 +90,7 @@ public class userProfile extends javax.swing.JFrame {
             }
         });
 
-        changePasswordLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        changePasswordLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         changePasswordLabel.setText("Change Password");
 
         bioTextArea.setColumns(20);
@@ -121,8 +121,9 @@ public class userProfile extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(23, 23, 23)
                             .addComponent(profilePhotoLabel)))
-                    .addComponent(changePasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(profilePasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(profilePasswordField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(changePasswordLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
@@ -203,7 +204,7 @@ public class userProfile extends javax.swing.JFrame {
                  flag = 1;
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(userProfile.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            } 
            
         }
         if (flag == 1) {

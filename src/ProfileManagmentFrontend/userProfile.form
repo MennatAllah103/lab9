@@ -41,8 +41,10 @@
                           <Component id="profilePhotoLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="changePasswordLabel" min="-2" pref="114" max="-2" attributes="0"/>
-                  <Component id="profilePasswordField" min="-2" pref="114" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="profilePasswordField" alignment="0" max="32767" attributes="0"/>
+                      <Component id="changePasswordLabel" alignment="0" pref="225" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
@@ -179,7 +181,7 @@
     <Component class="javax.swing.JLabel" name="changePasswordLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="1"/>
+          <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Change Password"/>
       </Properties>
