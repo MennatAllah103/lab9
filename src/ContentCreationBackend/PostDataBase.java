@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.*;
@@ -56,7 +57,12 @@ public class PostDataBase {
                 String authorID = postJson.getString("authorID");
                 String content = postJson.getString("content");
                 String timeStamp = postJson.getString("timeStamp");
-                posts.add(new Post());
+                Post post = new Post();
+                post.setContentID(contentID);
+                post.setAuthorID(authorID);
+                post.setContent(content);
+                post.setTimestamp(LocalDateTime.parse(timeStamp, formatter));
+                posts.add(post);          
             }
         } catch (IOException e) {
             System.err.println("Error reading posts from file: " + e.getMessage());

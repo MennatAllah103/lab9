@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -56,7 +57,12 @@ public ArrayList<Story> ReadStoriesFromFile() {
                 String authorID = storyJson.getString("authorID");
                 String content = storyJson.getString("content");
                 String timeStamp = storyJson.getString("timeStamp");
-                stories.add(new Story());
+               Story story = new Story();
+               story.setContentID(contentID);
+               story.setAuthorID(authorID);
+               story.setContent(content);
+               story.setTimestamp(LocalDateTime.parse(timeStamp, formatter));
+                stories.add(story);
             }
         } catch (IOException e) {
             System.err.println("Error reading stories from file: " + e.getMessage());
