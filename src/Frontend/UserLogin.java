@@ -4,6 +4,8 @@
  */
 package Frontend;
 
+import ContentCreationFrontend.AddPostFront;
+import ContentCreationFrontend.AddStoryFront;
 import UserManagementBackend.User;
 import UserManagementBackend.UserLog;
 import UserManagementBackend.UserDataBase;

@@ -97,5 +97,49 @@
         "email": "ali@gmail.com",
         "username": "ali",
         "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-04",
+        "userId": "a797c1b2-d61d-479d-a66b-2129b1080819",
+        "email": "arwa@gmail.com",
+        "username": "arwa",
+        "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-08-16",
+        "userId": "03e311a8-571e-4080-b095-2d7a89c09401",
+        "email": "yysdy@yahoo.com",
+        "username": "yyssdd",
+        "status": "offline"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-08-16",
+        "userId": "6acdc998-2387-4e45-9357-313dd6f63bbd",
+        "email": "yoyo@yahoo.com",
+        "username": "yoyo",
+        "status": "online"
+    },
+    {
+        "password": "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-08-16",
+        "userId": "80f4a774-c5c0-4a8e-bfe6-58956265c535",
+        "email": "yaya@yahoo.com",
+        "username": "yaya",
+        "status": "online"
     }
 ]
