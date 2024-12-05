@@ -27,7 +27,7 @@ public class Home extends javax.swing.JFrame {
         if (instance == null)   // If the instance doesn't exist, create it
             instance = new Home();
         
-        return instance;  
+        return instance;  // Return the single instance
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +47,7 @@ public class Home extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 204, 255));
 
         signup.setBackground(new java.awt.Color(255, 204, 255));
-        signup.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        signup.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signup.setText("Sign Up");
         signup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,7 +56,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         login.setBackground(new java.awt.Color(255, 204, 255));
-        login.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         login.setText("Login");
         login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
