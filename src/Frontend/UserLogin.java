@@ -22,12 +22,11 @@ public class UserLogin extends javax.swing.JFrame {
     /**
      * Creates new form UserLogin
      */
-    public UserLogin(Home home,UserLog log) {
-        initComponents();
-        this.home=home;
-        this.log=log;
-        
-    }
+ public UserLogin(UserLog log,Home home) {
+    initComponents();
+    this.home = Home.getInstance(); // Use the Singleton instance of Home
+    this.log = log;
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -164,13 +163,12 @@ public class UserLogin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Wrong username for this password!", "Error", JOptionPane.ERROR_MESSAGE);
         return;
     }
-    
-
+      UserDataBase.setCurrentUser(u);
     // Successful login
     JOptionPane.showMessageDialog(this, "Login successful! Welcome, " + username + ".", "Success", JOptionPane.INFORMATION_MESSAGE);
     // You can add navigation to the next screen or action here
         
-  
+        
         
     }//GEN-LAST:event_loginActionPerformed
 

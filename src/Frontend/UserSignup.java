@@ -18,14 +18,17 @@ public class UserSignup extends javax.swing.JFrame {
      Home home;
      UserLog log=new UserLog(UserDataBase.getDatabase());
      UserLogin login;
+    
+ 
+
     /**
      * Creates new form UserSignup
      */
-    public UserSignup(Home home,UserLog log,UserLogin login) {
+    public UserSignup(UserLog log,UserLogin login,Home home) {
         initComponents();
-        this.home=home;
-        this.log=log;
-        this.login=login;
+        this.home = Home.getInstance(); // Ensure Home is a singleton and get its instance
+        this.log = log;
+        this.login = login;
     }
 
     /**
@@ -107,17 +110,18 @@ public class UserSignup extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(6, 6, 6)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(117, 117, 117)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(emailtext, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                            .addComponent(usernametext)
-                            .addComponent(confirmpasswordtext)
-                            .addComponent(passwordtext, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textdate, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(emailtext, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                                .addComponent(usernametext)
+                                .addComponent(confirmpasswordtext)
+                                .addComponent(passwordtext, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(textdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addComponent(signup)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +139,7 @@ public class UserSignup extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(confirmpasswordtext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(textdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -198,13 +202,15 @@ public class UserSignup extends javax.swing.JFrame {
     boolean signupSuccess = log.signup(email, password, date, username);
     if (signupSuccess) {
         JOptionPane.showMessageDialog(this, "Signup successful!", "Message", JOptionPane.INFORMATION_MESSAGE);
+       this.dispose();
+       UserLogin login=new UserLogin(log,home);
+      login.setVisible(true);
         // Navigate to next screen or take other actions
     } else {
         JOptionPane.showMessageDialog(this, "Signup failed! Email or username might already be in use.", "Message", JOptionPane.ERROR_MESSAGE);
     } 
     
-      this.dispose();
-      login.setVisible(true);
+      
       
       
     }//GEN-LAST:event_signupActionPerformed
