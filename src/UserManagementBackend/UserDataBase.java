@@ -154,11 +154,21 @@ public void updateStatus(String userId, boolean status) {
         }
         return null;
     }
+    public User getUserByUsername(String username) {
+        for (User u : Users) {
+            if (u.getUsername().equals(username)) {
+                return u;
+            }
+
+        }
+        return null;
+    }
+
+    
     public static void setCurrentUser(User user) {
         currentUser = user;
     }
 
-    // Get the current logged-in user
     public static User getCurrentUser() {
         return currentUser;
     } 
