@@ -202,14 +202,15 @@ public class UserSignup extends javax.swing.JFrame {
     boolean signupSuccess = log.signup(email, password, date, username);
     if (signupSuccess) {
         JOptionPane.showMessageDialog(this, "Signup successful!", "Message", JOptionPane.INFORMATION_MESSAGE);
+       this.dispose();
+       UserLogin login=new UserLogin(log,home);
+      login.setVisible(true);
         // Navigate to next screen or take other actions
     } else {
         JOptionPane.showMessageDialog(this, "Signup failed! Email or username might already be in use.", "Message", JOptionPane.ERROR_MESSAGE);
     } 
     
-      this.dispose();
-       UserLogin login=new UserLogin(log,home);
-      login.setVisible(true);
+      
       
       
     }//GEN-LAST:event_signupActionPerformed
