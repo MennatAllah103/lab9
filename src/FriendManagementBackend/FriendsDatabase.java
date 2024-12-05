@@ -91,20 +91,11 @@ public class FriendsDatabase {
     }
 
     public ArrayList<Friends> getALLFriends() {
+        
+        ArrayList<Friends> friends =friendsDB.loadFile();
         return friends;
     }
     
-    public ArrayList<Friends> getUserFriends(String Userid1)
-    {
-        ArrayList<Friends> userfriends = new ArrayList<Friends>();
-        
-        for(Friends f : friends)
-        {
-            if(Userid1.equals(f.getUserid1())||Userid1.equals(f.getUserid2()))
-                   userfriends.add(f);
-            
-        }
-        return userfriends ;
-    }
+  
     
 }

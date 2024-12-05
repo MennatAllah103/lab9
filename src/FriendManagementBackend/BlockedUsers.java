@@ -10,7 +10,7 @@ package FriendManagementBackend;
  */
 public class BlockedUsers {
     
-     String Blocker; 
+    String Blocker; 
     String  Blocked; 
 
     public BlockedUsers(String Blocker, String Blocked) {

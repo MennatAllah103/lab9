@@ -28,24 +28,29 @@ public class RequestsManagement {
     public void deleterequest(Requests R)
     {
         requestsarray.remove(R);
+       // R.setRequestStatus("Deleted");
        RequestsDB.saveFile(requestsarray);
     }
     
     public void acceptrequest(Requests R)
     {
+     // R.setRequestStatus("Accepted");
       String Userid1 = R.getSenderID();
       String Userid2 = R.getReceiverID();
       
-      Friends friends= new Friends(Userid1,Userid2);
+    Friends friends= new Friends(Userid1,Userid2);
    
-     
+     deleterequest(R);
      FriendsM.addfriend(friends);
       
     }
     
     public void declinerequest(Requests R)
     {
-          deleterequest(R);
+       //  R.setRequestStatus("Declined");
+        deleterequest(R);
+       RequestsDB.saveFile(requestsarray);
+         
     }
     
     

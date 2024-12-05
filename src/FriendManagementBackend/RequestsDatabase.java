@@ -43,7 +43,11 @@ public class RequestsDatabase {
                 JSONObject requestJson = requestsArray.getJSONObject(i);
                 String senderID = requestJson.getString("senderID");
                 String receiverID = requestJson.getString("receiverID");
-                requests.add(new Requests(senderID, receiverID));
+                String requestStatus= requestJson.getString("requestStatus");
+                Requests R=new Requests(senderID, receiverID);
+                R.setRequestStatus(requestStatus);
+                requests.add(R);
+                
 
             }
 
@@ -61,6 +65,7 @@ public class RequestsDatabase {
             JSONObject j = new JSONObject();
             j.put("senderID", r.senderID);
             j.put("receiverID", r.receiverID);
+            j.put("requestStatus", r.requestStatus);
             requestsArray.put(j);
 
         }
@@ -70,12 +75,14 @@ public class RequestsDatabase {
             file.write(requestsArray.toString(4));
             file.close();
         } catch (IOException ex) {
-            Logger.getLogger(FriendsDatabase.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequestsDatabase.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
     public ArrayList<Requests> getALLRequests() {
+        
+        ArrayList<Requests> requests=requestsDB.loadFile();
         return requests;
     }
 

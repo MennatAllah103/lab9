@@ -11,10 +11,21 @@ package FriendManagementBackend;
 public class Requests {
     String senderID;  
     String receiverID;  
+    String requestStatus;
 
     public Requests(String senderID,String receiverID) {
         this.senderID = senderID;
         this.receiverID = receiverID;
+        requestStatus="pending";
+
+    }
+
+    public String getRequestStatus() {
+        return requestStatus;
+    }
+
+    public void setRequestStatus(String requestStatus) {
+        this.requestStatus = requestStatus;
     }
 
     public String getSenderID() {
