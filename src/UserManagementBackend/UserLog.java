@@ -22,7 +22,7 @@ public class UserLog {
 
     public UserLog(UserDataBase database) {
        
-        this.database = database;
+        this.database = UserDataBase.getDatabase();
     }
 
    public boolean signup(String email, String password, LocalDate dateOfBirth, String username) {
@@ -136,7 +136,7 @@ public class UserLog {
             return null;
         }
         
-        
+        database.updateStatus(user.getUserId(),true);
         return user;
     } catch (NoSuchAlgorithmException e) {
         System.err.println("Error hashing password: " + e.getMessage());

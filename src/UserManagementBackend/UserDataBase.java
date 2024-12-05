@@ -124,16 +124,16 @@ public class UserDataBase {
 }
 
 
-    public void updateStatus(String userId, boolean status) {
-        User user = getUserById(userId);
-        if (user != null) {
+public void updateStatus(String userId, boolean status) {
+    for (User user : Users) { 
+        if (user.getUserId().equals(userId)) {
             user.setStatus(status);
-            SaveUserToFile(Users);
-        } else {
-            System.out.println("User Id not found");
+            SaveUserToFile(Users); 
+            return; 
         }
-
     }
+    System.out.println("User Id not found");
+}
 
     public User getUserById(String userId) {
         for (User u : Users) {
