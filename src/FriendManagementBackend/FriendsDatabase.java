@@ -26,7 +26,7 @@ public class FriendsDatabase {
 
     private FriendsDatabase() {
         
-        
+        friends = loadFile();
     }
     
     

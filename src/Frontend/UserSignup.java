@@ -190,6 +190,8 @@ public class UserSignup extends javax.swing.JFrame {
     }
 
     // Attempt to parse the date of birth
+    
+    //edit validate date
     try {
         date = textdate.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     } catch (NullPointerException e) {

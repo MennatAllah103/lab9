@@ -52,6 +52,17 @@ public class RequestsManagement {
        RequestsDB.saveFile(requestsarray);
          
     }
-    
+      public ArrayList<Requests> getUserRequests(String Userid)
+    {
+        ArrayList<Requests> userrequests = new ArrayList<Requests>();
+        
+        for(Requests r: userrequests)
+        {
+            if(Userid.equals(r.getSenderID())||Userid.equals(r.getReceiverID()))
+                   userrequests.add(r);
+            
+        }
+        return userrequests ;
+    }
     
 }

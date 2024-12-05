@@ -24,6 +24,9 @@ public class RequestsDatabase {
     ArrayList<Requests> requests = new ArrayList<>();
 
     private RequestsDatabase() {
+        
+           requests=loadFile();
+
     }
 
     public static RequestsDatabase getinstance() {
@@ -48,10 +51,9 @@ public class RequestsDatabase {
                 R.setRequestStatus(requestStatus);
                 requests.add(R);
                 
-
             }
 
-           
+       
         } catch (IOException ex) {
             Logger.getLogger(RequestsDatabase.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -1,0 +1,17 @@
+[
+    {
+        "senderID": "12345",
+        "receiverID": "Alice Johnson",
+        "requestStatus": "pending"
+    },
+    {
+        "senderID": "67890",
+        "receiverID": "Bob Smith",
+        "requestStatus": "pending"
+    },
+    {
+        "senderID": "11223",
+        "receiverID": "Charlie Brown",
+        "requestStatus": "pending"
+    }
+]
