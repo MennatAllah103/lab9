@@ -38,6 +38,8 @@ public class Newsfeed extends javax.swing.JFrame {
         ManageFriends = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         newsfeedLabel = new javax.swing.JLabel();
+        Addpost = new javax.swing.JButton();
+        addstory = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Newsfeed");
@@ -67,6 +69,19 @@ public class Newsfeed extends javax.swing.JFrame {
         newsfeedLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         newsfeedLabel.setText("Newsfeed");
 
+        Addpost.setBackground(new java.awt.Color(255, 204, 255));
+        Addpost.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Addpost.setText("Add Post");
+
+        addstory.setBackground(new java.awt.Color(255, 204, 255));
+        addstory.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        addstory.setText("Add Story");
+        addstory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addstoryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,13 +89,17 @@ public class Newsfeed extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newsfeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(ManageFriends)
-                        .addGap(163, 163, 163)
-                        .addComponent(btnVisitProfile))
-                    .addComponent(newsfeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                        .addGap(44, 44, 44)
+                        .addComponent(Addpost)
+                        .addGap(34, 34, 34)
+                        .addComponent(addstory)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnVisitProfile)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logout)
                 .addGap(21, 21, 21))
         );
@@ -93,7 +112,9 @@ public class Newsfeed extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ManageFriends)
                     .addComponent(btnVisitProfile)
-                    .addComponent(logout))
+                    .addComponent(logout)
+                    .addComponent(Addpost)
+                    .addComponent(addstory))
                 .addContainerGap(321, Short.MAX_VALUE))
         );
 
@@ -116,11 +137,17 @@ public class Newsfeed extends javax.swing.JFrame {
         
     }//GEN-LAST:event_logoutActionPerformed
 
+    private void addstoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addstoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addstoryActionPerformed
+
   
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Addpost;
     private javax.swing.JButton ManageFriends;
+    private javax.swing.JButton addstory;
     private javax.swing.JButton btnVisitProfile;
     private javax.swing.JButton logout;
     private javax.swing.JLabel newsfeedLabel;
