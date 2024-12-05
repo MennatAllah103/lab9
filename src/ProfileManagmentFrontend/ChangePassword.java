@@ -5,6 +5,7 @@
 package ProfileManagmentFrontend;
 
 import ProfileManagementBackend.ProfileManager;
+import UserManagementBackend.PasswordHashing;
 import UserManagementBackend.UserDataBase;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
@@ -21,6 +22,7 @@ public class ChangePassword extends javax.swing.JFrame {
 
     /**
      * Creates new form ChangePassword
+     *
      * @param manager
      */
     public ChangePassword(ProfileManager manager) {
@@ -115,24 +117,28 @@ public class ChangePassword extends javax.swing.JFrame {
         String oldPassword = oldPasswordField.getText();
         String newPassword = newPasswordField.getText();
 
-        if (oldPassword.isEmpty() || newPassword.isEmpty()) { // checks for empty fields
+        if (oldPassword.isEmpty() || newPassword.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Some fields are empty", "Error", JOptionPane.ERROR_MESSAGE);
-
+            return;
         }
-        if (oldPassword.equals(newPassword)) { // checks if old pw matches new pw
+
+        if (oldPassword.equals(newPassword)) {
             JOptionPane.showMessageDialog(this, "New password matches old password", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-
-        if (!oldPassword.equals(UserDataBase.getCurrentUser().getPassword())) {
-            JOptionPane.showMessageDialog(this, "Old password is incorrect", "Error", JOptionPane.ERROR_MESSAGE);
-        } 
 
         try {
+            String hashedOldPassword = PasswordHashing.hashPassword(oldPassword);
+
+            if (!hashedOldPassword.equals(UserDataBase.getCurrentUser().getPassword())) {
+                JOptionPane.showMessageDialog(this, "Old password is incorrect", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             manager.updatePassword(newPassword);
             JOptionPane.showMessageDialog(this, "Password changed successfully!");
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ChangePassword.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this, "An error occurred while updating the password", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "An error occurred while processing the password. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
 

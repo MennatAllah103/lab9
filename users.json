@@ -64,5 +64,16 @@
         "email": "farah@gmail.com",
         "username": "farah",
         "status": "offline"
+    },
+    {
+        "password": "WZRHGrsBESr8wYFZ9sx0tPURuZgG2lmzyvWpwXPKz8U=",
+        "profilePhoto": "C:\\Users\\hp\\Downloads\\pfp.jpg",
+        "coverPhoto": "C:\\Users\\hp\\Downloads\\coverphoto.jpg",
+        "bio": "hi i am fai",
+        "dateOfBirth": "2024-12-01",
+        "userId": "2f4e82c4-57b5-4067-980d-6c2cfc9e850d",
+        "email": "adhd@hotmail.com",
+        "username": "adhd1205",
+        "status": "offline"
     }
 ]
