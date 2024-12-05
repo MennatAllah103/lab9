@@ -74,10 +74,8 @@ public class ProfileManager {
                     user.setPassword(hashedPassword);
                 }
             }
-
             userDatabase.SaveUserToFile(users);
-        }
-        
+        }     
 
     }
     

@@ -19,16 +19,18 @@ import javax.swing.JOptionPane;
  *
  * @author hp
  */
-public class userProfile extends javax.swing.JFrame {
+public class EditProfile extends javax.swing.JFrame {
 
     ProfileManager manager;
 
     /**
      * Creates new form Profile
      */
-    public userProfile() {
+    public EditProfile() {
         initComponents();
         manager = new ProfileManager();
+        String username = UserDataBase.getCurrentUser().getUsername();
+        usernameLabel.setText(username);
     }
 
     /**
@@ -46,14 +48,14 @@ public class userProfile extends javax.swing.JFrame {
         btnUploadCoverPhoto = new javax.swing.JButton();
         bioLabel = new javax.swing.JLabel();
         btnSaveProfile = new javax.swing.JButton();
-        profilePasswordField = new javax.swing.JPasswordField();
-        changePasswordLabel = new javax.swing.JLabel();
         bioScrollPane = new javax.swing.JScrollPane();
         bioTextArea = new javax.swing.JTextArea();
         postsScrollPane = new javax.swing.JScrollPane();
         postsJPanel = new javax.swing.JPanel();
         friendsScrollPane = new javax.swing.JScrollPane();
         friendsJList = new javax.swing.JList<>();
+        btnChangePassword = new javax.swing.JButton();
+        usernameLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,9 +93,6 @@ public class userProfile extends javax.swing.JFrame {
             }
         });
 
-        changePasswordLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        changePasswordLabel.setText("Change Password");
-
         bioTextArea.setColumns(20);
         bioTextArea.setRows(5);
         bioScrollPane.setViewportView(bioTextArea);
@@ -104,35 +103,44 @@ public class userProfile extends javax.swing.JFrame {
 
         friendsScrollPane.setViewportView(friendsJList);
 
+        btnChangePassword.setBackground(new java.awt.Color(255, 204, 255));
+        btnChangePassword.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnChangePassword.setText("Change Password");
+        btnChangePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangePasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(btnUploadProfilePhoto))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(bioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bioScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(23, 23, 23))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(23, 23, 23)
-                            .addComponent(profilePhotoLabel)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(profilePasswordField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(changePasswordLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(bioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnUploadProfilePhoto))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(profilePhotoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                        .addGap(74, 74, 74)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnUploadCoverPhoto)
                             .addComponent(coverPhotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
+                        .addGap(84, 84, 84)
                         .addComponent(friendsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(postsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -158,21 +166,21 @@ public class userProfile extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(friendsScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                                     .addComponent(postsScrollPane))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(profilePhotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUploadProfilePhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bioLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(bioScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                        .addComponent(changePasswordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(profilePasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))))
+                        .addGap(36, 36, 36)
+                        .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 90, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -187,41 +195,22 @@ public class userProfile extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
             profilePhotoLabel.setIcon(icon);
             manager.updatePhoto(filePath, "profile");
+            JOptionPane.showMessageDialog(this, "Profile photo updated successfully!");
+
         }
 
     }//GEN-LAST:event_btnUploadProfilePhotoActionPerformed
 
     private void btnSaveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveProfileActionPerformed
         String bio = bioTextArea.getText();
-        String password = new String(profilePasswordField.getPassword());
-        int flag = 0;
-        String oldPassword = UserDataBase.getCurrentUser().getPassword();
         String oldBio = UserDataBase.getCurrentUser().getBio();
-        if (!bio.isEmpty()) {
-            if (!bio.equals(oldBio)) {
-                manager.updateBio(bio);
-                flag = 1;
-            } else {
-                JOptionPane.showMessageDialog(this, "New bio  matches old bio", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+        if (bio.isEmpty() || bio.equals(oldBio)) {
+            JOptionPane.showMessageDialog(this, "No changes detected to save.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
-        if (!password.isEmpty()) {
-            try {
-                if (!password.equals(oldPassword)) {
-                    manager.updatePassword(password);
-                    flag = 1;
-                } else {
-                    JOptionPane.showMessageDialog(this, "New password matches old password", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+        manager.updateBio(bio);
+        JOptionPane.showMessageDialog(this, "Profile updated successfully!");
 
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(userProfile.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        }
-        if (flag == 1) {
-            JOptionPane.showMessageDialog(this, "Profile updated successfully!");
-        }
 
     }//GEN-LAST:event_btnSaveProfileActionPerformed
 
@@ -234,24 +223,31 @@ public class userProfile extends javax.swing.JFrame {
             ImageIcon icon = new ImageIcon(new ImageIcon(filePath).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
             coverPhotoLabel.setIcon(icon);
             manager.updatePhoto(filePath, "cover");
+            JOptionPane.showMessageDialog(this, "Cover photo updated successfully!");
+            
         }
     }//GEN-LAST:event_btnUploadCoverPhotoActionPerformed
+
+    private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
+        ChangePassword changePassword = new ChangePassword(manager);
+        changePassword.setVisible(true);
+    }//GEN-LAST:event_btnChangePasswordActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bioLabel;
     private javax.swing.JScrollPane bioScrollPane;
     private javax.swing.JTextArea bioTextArea;
+    private javax.swing.JButton btnChangePassword;
     private javax.swing.JButton btnSaveProfile;
     private javax.swing.JButton btnUploadCoverPhoto;
     private javax.swing.JButton btnUploadProfilePhoto;
-    private javax.swing.JLabel changePasswordLabel;
     private javax.swing.JLabel coverPhotoLabel;
     private javax.swing.JList<String> friendsJList;
     private javax.swing.JScrollPane friendsScrollPane;
     private javax.swing.JPanel postsJPanel;
     private javax.swing.JScrollPane postsScrollPane;
-    private javax.swing.JPasswordField profilePasswordField;
     private javax.swing.JLabel profilePhotoLabel;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }
