@@ -23,7 +23,7 @@ public class RequestsDatabase {
     private static RequestsDatabase requestsDB = null;
     ArrayList<Requests> requests = new ArrayList<>();
 
-    public RequestsDatabase() {
+    private RequestsDatabase() {
     }
 
     public static RequestsDatabase getinstance() {
@@ -47,11 +47,12 @@ public class RequestsDatabase {
 
             }
 
-            return requests;
+           
         } catch (IOException ex) {
             Logger.getLogger(RequestsDatabase.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        
+     return requests;
     }
 
     public void saveFile(ArrayList<Requests> requests) {
@@ -74,7 +75,7 @@ public class RequestsDatabase {
 
     }
 
-    public ArrayList<Requests> getRequests() {
+    public ArrayList<Requests> getALLRequests() {
         return requests;
     }
 

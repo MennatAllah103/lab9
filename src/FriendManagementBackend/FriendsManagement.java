@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class FriendsManagement {
     
     FriendsDatabase FriendsDB =FriendsDatabase.getinstance();
-    ArrayList<Friends> friendsarray=FriendsDB.getFriends();
+    ArrayList<Friends> friendsarray=FriendsDB.getALLFriends();
     
     
     public void addfriend(Friends F)

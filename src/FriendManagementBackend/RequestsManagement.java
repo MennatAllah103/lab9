@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class RequestsManagement {
     
    RequestsDatabase RequestsDB= RequestsDatabase.getinstance();
-  ArrayList<Requests> requestsarray=RequestsDB.getRequests();
+  ArrayList<Requests> requestsarray=RequestsDB.getALLRequests();
   
  // FriendsDatabase FriendsDB =FriendsDatabase.getinstance();
   //3ade a3ml new hna wla la2
