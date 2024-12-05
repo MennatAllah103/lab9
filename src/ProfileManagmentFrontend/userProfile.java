@@ -5,6 +5,7 @@
 package ProfileManagmentFrontend;
 
 import ProfileManagementBackend.ProfileManager;
+import UserManagementBackend.UserDataBase;
 import java.awt.Image;
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
@@ -194,18 +195,29 @@ public class userProfile extends javax.swing.JFrame {
         String bio = bioTextArea.getText();
         String password = new String(profilePasswordField.getPassword());
         int flag = 0;
+        String oldPassword = UserDataBase.getCurrentUser().getPassword();
+        String oldBio = UserDataBase.getCurrentUser().getBio();
         if (!bio.isEmpty()) {
-            manager.updateBio(bio);
-            flag = 1;
+            if (!bio.equals(oldBio)) {
+                manager.updateBio(bio);
+                flag = 1;
+            } else {
+                JOptionPane.showMessageDialog(this, "New bio  matches old bio", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
         if (!password.isEmpty()) {
             try {
-                manager.updatePassword(password);
-                 flag = 1;
+                if (!password.equals(oldPassword)) {
+                    manager.updatePassword(password);
+                    flag = 1;
+                } else {
+                    JOptionPane.showMessageDialog(this, "New password matches old password", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(userProfile.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-           
+            }
+
         }
         if (flag == 1) {
             JOptionPane.showMessageDialog(this, "Profile updated successfully!");
