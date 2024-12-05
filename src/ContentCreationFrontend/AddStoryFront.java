@@ -4,10 +4,10 @@
  */
 package ContentCreationFrontend;
 
-import ContentCreationBackend.PostDataBase;
+import ContentCreationBackend.StoryDataBase;
 import ContentCreationBackend.Content;
 import ContentCreationBackend.FactoryContent;
-import ContentCreationBackend.Post;
+import ContentCreationBackend.Story;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import UserManagementBackend.UserDataBase;
@@ -15,23 +15,21 @@ import UserManagementBackend.User;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author yaras
  */
-public class AddPostFront extends javax.swing.JFrame {
-
-    private String selectedImagePath;
+public class AddStoryFront extends javax.swing.JFrame {
 
     /**
-     * Creates new form PostFront
+     * Creates new form AddStory
      */
-    public AddPostFront() {
+    public AddStoryFront() {
         initComponents();
     }
+    private String selectedImagePath;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,25 +40,17 @@ public class AddPostFront extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        CancelBtn = new javax.swing.JButton();
+        ShareBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         EnteredText = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        CancelBtn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        ShareBtn = new javax.swing.JButton();
         imageAdded = new javax.swing.JLabel();
         ImageAddBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Add Post");
-
-        EnteredText.setColumns(20);
-        EnteredText.setRows(5);
-        jScrollPane1.setViewportView(EnteredText);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Add your text");
-        jLabel1.setToolTipText("");
+        setTitle("Add Story");
 
         CancelBtn.setText("Cancel");
         CancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -69,15 +59,22 @@ public class AddPostFront extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Add your image");
-
         ShareBtn.setText("Share");
         ShareBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShareBtnActionPerformed(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Add your image");
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Add your text");
+
+        EnteredText.setColumns(20);
+        EnteredText.setRows(5);
+        jScrollPane1.setViewportView(EnteredText);
 
         ImageAddBtn.setText("Add Image");
         ImageAddBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -91,22 +88,23 @@ public class AddPostFront extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(26, 26, 26)
+                                .addGap(14, 14, 14)
                                 .addComponent(ImageAddBtn)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(imageAdded, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(83, 83, 83))
-            .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(imageAdded, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(3, 3, 3))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(ShareBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -123,16 +121,14 @@ public class AddPostFront extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imageAdded, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 91, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ImageAddBtn)
-                        .addGap(30, 30, 30))
-                    .addComponent(imageAdded, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(91, 91, 91)
+                        .addComponent(ImageAddBtn)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ShareBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -149,28 +145,26 @@ public class AddPostFront extends javax.swing.JFrame {
 
     private void ShareBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShareBtnActionPerformed
         // TODO add your handling code here:
+
+        //JOptionPane.showMessageDialog(this, "Some Fields are empty!", "Message", JOptionPane.ERROR_MESSAGE);
         FactoryContent F = new FactoryContent();
         UserDataBase currentUserDb = UserDataBase.getDatabase();
         User currentUser = currentUserDb.getCurrentUser();// Get the logged-in User object
         if (currentUser == null) {
             JOptionPane.showMessageDialog(this, "No user is currently logged in.", "Message", JOptionPane.ERROR_MESSAGE);
+            //  System.err.println("No user is currently logged in.");
             return; // Exit if no user is logged in
         }
         String text = EnteredText.getText();
-
-        Post p = (Post) F.createContent("post");
-        if (selectedImagePath != null && !selectedImagePath.isEmpty()) {
-            p.setImagePath(selectedImagePath);
-        }
-        p.setContent(text);
-        p.setContentID(UUID.randomUUID().toString());
-        p.setTimestamp(LocalDateTime.now());
-        p.setAuthorID(currentUser.getUserId());
-       
+        Story s = (Story) F.createContent("story");
+        s.setContent(text);
+        s.setContentID(UUID.randomUUID().toString());
+        s.setTimestamp(LocalDateTime.now());
+        s.setAuthorID(currentUser.getUserId());
     }//GEN-LAST:event_ShareBtnActionPerformed
 
     private void ImageAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImageAddBtnActionPerformed
-        // TODO add your handling code here:                                            
+        // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Select an Image");
         fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Image Files", "jpg", "png", "jpeg"));
@@ -203,13 +197,13 @@ public class AddPostFront extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddPostFront.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStoryFront.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddPostFront.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStoryFront.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddPostFront.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStoryFront.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddPostFront.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStoryFront.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -217,7 +211,7 @@ public class AddPostFront extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddPostFront().setVisible(true);
+                new AddStoryFront().setVisible(true);
             }
         });
     }

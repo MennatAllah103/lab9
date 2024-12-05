@@ -16,6 +16,7 @@ public abstract class Content {
     protected String contentID;
     protected String authorID;
     protected String content;
+    protected String imagePath;
     protected LocalDateTime timestamp;
 
     public Content() {
@@ -29,11 +30,20 @@ public abstract class Content {
     public String getContentID() {
         return contentID;
     }
-
+    
     public void setContentID(String contentID) {
         this.contentID = contentID;
     }
 
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    
     public String getAuthorID() {
         return authorID;
     }
