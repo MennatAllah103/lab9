@@ -27,7 +27,7 @@ public class Home extends javax.swing.JFrame {
         if (instance == null)   // If the instance doesn't exist, create it
             instance = new Home();
         
-        return instance;  // Return the single instance
+        return instance;  
     }
     /**
      * This method is called from within the constructor to initialize the form.
