@@ -10,6 +10,10 @@ import ContentCreationBackend.FactoryContent;
 import ContentCreationBackend.Post;
 import java.time.LocalDateTime;
 import java.util.UUID;
+import UserManagementBackend.UserDataBase;
+import UserManagementBackend.User;
+import javax.swing.JOptionPane;
+        
 
 /**
  *
@@ -112,17 +116,27 @@ public class AddPostFront extends javax.swing.JFrame {
 
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
         // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_CancelBtnActionPerformed
 
     private void ShareBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShareBtnActionPerformed
         // TODO add your handling code here:
+        
+        //JOptionPane.showMessageDialog(this, "Some Fields are empty!", "Message", JOptionPane.ERROR_MESSAGE);
         FactoryContent F = new FactoryContent();
+        UserDataBase currentUserDb =UserDataBase.getDatabase();
+        User currentUser = currentUserDb.getCurrentUser();// Get the logged-in User object
+    if (currentUser == null) {
+        JOptionPane.showMessageDialog(this, "No user is currently logged in.", "Message", JOptionPane.ERROR_MESSAGE);
+      //  System.err.println("No user is currently logged in.");
+        return; // Exit if no user is logged in
+    }
         String text = EnteredText.getText();
         Post p = (Post) F.createContent("post");
         p.setContent(text);
         p.setContentID(UUID.randomUUID().toString());
         p.setTimestamp(LocalDateTime.now());
-       // p.setAuthorID(text);
+        p.setAuthorID(currentUser.getUserId());
     }//GEN-LAST:event_ShareBtnActionPerformed
 
     /**

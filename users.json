@@ -108,5 +108,27 @@
         "email": "arwa@gmail.com",
         "username": "arwa",
         "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-08-16",
+        "userId": "03e311a8-571e-4080-b095-2d7a89c09401",
+        "email": "yysdy@yahoo.com",
+        "username": "yyssdd",
+        "status": "offline"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-08-16",
+        "userId": "6acdc998-2387-4e45-9357-313dd6f63bbd",
+        "email": "yoyo@yahoo.com",
+        "username": "yoyo",
+        "status": "online"
     }
 ]
