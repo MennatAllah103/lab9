@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
  * @author yaras
  */
 public class AddStoryFront extends javax.swing.JFrame {
-
+    //Story S = new Story();
     /**
      * Creates new form AddStory
      */
@@ -157,10 +157,15 @@ public class AddStoryFront extends javax.swing.JFrame {
         }
         String text = EnteredText.getText();
         Story s = (Story) F.createContent("story");
+        if (selectedImagePath != null && !selectedImagePath.isEmpty()) {
+            s.setImagePath(selectedImagePath);
+        }
         s.setContent(text);
         s.setContentID(UUID.randomUUID().toString());
         s.setTimestamp(LocalDateTime.now());
         s.setAuthorID(currentUser.getUserId());
+        s.addStory(s);
+        JOptionPane.showMessageDialog(this, "Story shared successfully.");
     }//GEN-LAST:event_ShareBtnActionPerformed
 
     private void ImageAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImageAddBtnActionPerformed

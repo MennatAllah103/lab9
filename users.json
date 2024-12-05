@@ -130,5 +130,16 @@
         "email": "yoyo@yahoo.com",
         "username": "yoyo",
         "status": "online"
+    },
+    {
+        "password": "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-08-16",
+        "userId": "80f4a774-c5c0-4a8e-bfe6-58956265c535",
+        "email": "yaya@yahoo.com",
+        "username": "yaya",
+        "status": "online"
     }
 ]

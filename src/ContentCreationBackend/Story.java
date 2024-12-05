@@ -11,9 +11,10 @@ import java.util.ArrayList;
 public class Story extends Content {
 
     private ArrayList<Story> storyList = new ArrayList<>();
-
+StoryDataBase SDB = new StoryDataBase();
     public void addStory(Story s) {
         storyList.add(s);
+        SDB.SaveStoriesToFile(storyList);
     }
 
     public ArrayList<Story> getStories() {
@@ -25,6 +26,7 @@ public class Story extends Content {
                 deleteStory(s);
             }
         }
+        SDB.SaveStoriesToFile(storyList);
         return storyList;
     }
 

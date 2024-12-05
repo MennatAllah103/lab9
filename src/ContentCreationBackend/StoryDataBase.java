@@ -25,43 +25,60 @@ public class StoryDataBase {
 
     ArrayList<Story> stories = new ArrayList<>();
 
-    public void SaveStoriesToFile(ArrayList<Story> story) {
+    public void SaveStoriesToFile(ArrayList<Story> newStories) {
+        ArrayList<Story> existingStories = ReadStoriesFromFile();
+
+        // Add new posts to the existing list
+        existingStories.addAll(newStories);
         JSONArray storiesArray = new JSONArray();
-        for (Story s : story) {
+        for (Story s : existingStories) {
             if (!s.isExpired()) {
                 JSONObject j = new JSONObject();
                 j.put("contentID", s.getContentID());
                 j.put("authorID", s.getAuthorID());
                 j.put("content", s.getContent());
                 j.put("timeStamp", s.getTimestamp());
+                j.put("imagePath", s.getImagePath());
                 storiesArray.put(j);
             }
         }
         try {
             FileWriter file = new FileWriter("stories.json");
-            file.write(storiesArray.toString());
+            file.write(storiesArray.toString(4));
             file.close();
         } catch (IOException ex) {
             //Logger.getLogger(StoryDataBase.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Error saivng stories to file.");
         }
     }
-public ArrayList<Story> ReadStoriesFromFile() {
+
+    public ArrayList<Story> ReadStoriesFromFile() {
         try {
             String json = new String(Files.readAllBytes(Paths.get("stories.json")));
             JSONArray storiesArray = new JSONArray(json);
-            DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
             for (int i = 0; i < storiesArray.length(); i++) {
                 JSONObject storyJson = storiesArray.getJSONObject(i);
                 String contentID = storyJson.getString("contentID");
                 String authorID = storyJson.getString("authorID");
                 String content = storyJson.getString("content");
                 String timeStamp = storyJson.getString("timeStamp");
-               Story story = new Story();
-               story.setContentID(contentID);
-               story.setAuthorID(authorID);
-               story.setContent(content);
-               story.setTimestamp(LocalDateTime.parse(timeStamp, formatter));
+                String imagePath = "";
+                try {
+                    imagePath = storyJson.getString("imagePath");
+                } catch (JSONException e) {
+                    // Handle the case where "imagePath" is missing
+                    imagePath = "";  // or provide a default value
+                }
+
+                //  String imagePath = storyJson.getString("imagePath");
+                Story story = new Story();
+                story.setContentID(contentID);
+                story.setAuthorID(authorID);
+                story.setContent(content);
+                story.setTimestamp(LocalDateTime.parse(timeStamp, formatter));
+                story.setImagePath(imagePath);
+
                 stories.add(story);
             }
         } catch (IOException e) {

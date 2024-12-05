@@ -17,7 +17,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author yaras
@@ -25,7 +24,7 @@ import javax.swing.JOptionPane;
 public class AddPostFront extends javax.swing.JFrame {
 
     private String selectedImagePath;
-
+    //Post P= new Post();
     /**
      * Creates new form PostFront
      */
@@ -159,6 +158,7 @@ public class AddPostFront extends javax.swing.JFrame {
         String text = EnteredText.getText();
 
         Post p = (Post) F.createContent("post");
+        
         if (selectedImagePath != null && !selectedImagePath.isEmpty()) {
             p.setImagePath(selectedImagePath);
         }
@@ -166,7 +166,9 @@ public class AddPostFront extends javax.swing.JFrame {
         p.setContentID(UUID.randomUUID().toString());
         p.setTimestamp(LocalDateTime.now());
         p.setAuthorID(currentUser.getUserId());
-       
+        p.addPost(p);
+        JOptionPane.showMessageDialog(this, "Post shared successfully.");
+      // System.out.println("Share button clicked.");
     }//GEN-LAST:event_ShareBtnActionPerformed
 
     private void ImageAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImageAddBtnActionPerformed
