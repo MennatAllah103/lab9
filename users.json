@@ -108,5 +108,16 @@
         "email": "arwa@gmail.com",
         "username": "arwa",
         "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-17",
+        "userId": "c7bcb928-4819-4a52-9ca4-38ea0eacae4d",
+        "email": "ggg@gmail.com",
+        "username": "Dareen",
+        "status": "online"
     }
 ]
