@@ -13,16 +13,17 @@ import java.util.*;
  */
 public abstract class Content {
 
-    private String contentID;
-    private String authorID;
-    private String content;
-    private LocalDateTime timestamp;
+    protected String contentID;
+    protected String authorID;
+    protected String content;
+    protected LocalDateTime timestamp;
 
-    public Content(String authorID, String content, LocalDateTime timestamp) {
-        contentID = UUID.randomUUID().toString();
-        this.authorID = authorID;
-        this.content = content;
-        this.timestamp = timestamp;
+    public Content() {
+//        contentID = UUID.randomUUID().toString();
+//        this.authorID = authorID;
+//        this.content = content;
+//        this.timestamp = timestamp;
+//String authorID, String content, LocalDateTime timestamp
     }
 
     public String getContentID() {
