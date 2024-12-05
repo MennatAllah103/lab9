@@ -12,8 +12,10 @@ import UserManagementBackend.UserLog;
  * @author daree
  */
 public class Home extends javax.swing.JFrame {
+    
+    
     private static Home instance = null;
-     UserLog log=new UserLog(UserDataBase.getDatabase());
+    UserLog log=new UserLog(UserDataBase.getDatabase());
     private UserLogin logging;
     /**
      * Creates new form Home

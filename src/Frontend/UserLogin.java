@@ -168,7 +168,9 @@ public class UserLogin extends javax.swing.JFrame {
     JOptionPane.showMessageDialog(this, "Login successful! Welcome, " + username + ".", "Success", JOptionPane.INFORMATION_MESSAGE);
     // You can add navigation to the next screen or action here
         
-        
+       NewsFeed newsfeedframe= new NewsFeed() ;
+       newsfeedframe.setVisible(true);
+       setVisible(false);
         
     }//GEN-LAST:event_loginActionPerformed
 
