@@ -138,9 +138,9 @@ public class Newsfeed extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVisitProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitProfileActionPerformed
-
-        ViewProfile profile = new ViewProfile(this);
-        profile.setVisible(true);
+        
+        ViewProfile p = new ViewProfile(this);
+        p.setVisible(true);
     }//GEN-LAST:event_btnVisitProfileActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
@@ -178,6 +178,7 @@ public class Newsfeed extends javax.swing.JFrame {
         ManageFriends manage= new ManageFriends(this,user);
         manage.setVisible(true);
         this.dispose();
+        home.setVisible(false);
         
         
     }//GEN-LAST:event_ManageFriendsActionPerformed
