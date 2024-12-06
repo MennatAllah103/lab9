@@ -99,14 +99,11 @@ public class StoryDataBase {
                 story.setContent(content);
                 story.setTimestamp(LocalDateTime.parse(timeStamp, formatter));
                 story.setImagePath(imagePath);
-                // stories.add(story);
-                if (!story.isExpired()) {
-                    validStories.add(story); // Add to the valid stories list if not expired
-                }
+                 stories.add(story);
+                
 
             }
-            // Save the valid (non-expired) stories back to the file
-            SaveStoriesToFile(validStories);
+           
         } catch (IOException e) {
             System.err.println("Error reading stories from file: " + e.getMessage());
         } catch (JSONException e) {
