@@ -149,11 +149,31 @@ public class ManageFriends extends javax.swing.JFrame {
       String senderid= currentuser.getUserId();
       ArrayList<Requests> requests =manage.getUserRequests(senderid);
       String usernametoadd= JOptionPane.showInputDialog("Enter username:");
-      User receiver=userDB.getUserByUsername(usernametoadd);
+      if(usernametoadd!=null)
+      {
+          
+          
+         User receiver=userDB.getUserByUsername(usernametoadd);
       
       String receiverid=receiver.getUserId();
-      Requests R= new Requests(senderid,receiverid);
+      
+      
+      boolean Flag =areUsersBlocked(senderid,receiverid);
+      if(!Flag)
+      {
+           Requests R= new Requests(senderid,receiverid);
       manage.addrequest(R);
+      }
+      
+      else {
+           JOptionPane.showMessageDialog(this,"These users are blocked", "  Message ", JOptionPane.PLAIN_MESSAGE);
+      }
+      }
+    
+      else
+      {
+          JOptionPane.showMessageDialog(this, "You Should enter a username", "  Message ", JOptionPane.PLAIN_MESSAGE);
+      }
     }//GEN-LAST:event_sendreqActionPerformed
 
     private void suggestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suggestButtonActionPerformed
@@ -178,6 +198,12 @@ public class ManageFriends extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_viewFriendsActionPerformed
 
+    
+       public boolean areUsersBlocked(String senderId, String receiverId) {
+    ArrayList<String> senderBlockedUsers = manage.getAllUsersBlockedForaUser(senderId);
+    ArrayList<String> receiverBlockedUsers = manage.getAllUsersBlockedForaUser(receiverId);
+    return senderBlockedUsers.contains(receiverId) || receiverBlockedUsers.contains(senderId);
+       }
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;

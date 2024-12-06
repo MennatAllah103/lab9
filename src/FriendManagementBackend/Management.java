@@ -52,6 +52,8 @@ public class Management {
      
          public ArrayList<Friends> getUserFriends(String Userid1)
     {
+        
+    friendsList=FriendsDB.loadFile();
         ArrayList<Friends> userfriends = new ArrayList<>();
         
         for(Friends f : friendsList)
@@ -69,6 +71,7 @@ public class Management {
      
       public void addrequest(Requests R)
     {
+        
         requestsList.add(R);
         RequestsDB.saveFile(requestsList);
     }
@@ -145,6 +148,8 @@ public class Management {
   
   public  ArrayList<String> getAllUsersBlockedForaUser(String UserID)
   {
+     blocksList=BlocksDB.loadFile();
+      
       ArrayList<String> blockedIDs=new ArrayList<>();
       
       for(BlockedUsers B : blocksList)
@@ -167,6 +172,8 @@ public class Management {
       
   }
   
+ 
+  
   //m3aya userId 3yza ageb friendsoffriends
   //gbt list mn idsFriends bto3o
   //b3den hageb friendsIds le kl ID mn list de
@@ -176,21 +183,21 @@ public class Management {
    public ArrayList<String> getSuggestedFriends(String Userid1) 
     {
         
-       
+        
         ArrayList<String>  requestsSendersIDs=getUserSenderRequestsIDS(Userid1);
         ArrayList<String>  blockedUsersIDs =getAllUsersBlockedForaUser(Userid1);
         
         ArrayList<String>  suggestedFriendsIDs= new ArrayList<>();
-        ArrayList<String> FriendsofFriendsIDS = new ArrayList<>();
+        
         
         ArrayList<String> userfriendsIDS=getUserFriendsIDs(Userid1);
         for(String friendID : userfriendsIDS)
         {
-            FriendsofFriendsIDS=getUserFriendsIDs(friendID);
+          ArrayList<String>  FriendsofFriendsIDS=getUserFriendsIDs(friendID);
             for(String id : FriendsofFriendsIDS)
             {
                 
-                if(!(requestsSendersIDs.contains(id)&&blockedUsersIDs.contains(id)&&userfriendsIDS.contains(id)&&suggestedFriendsIDs.contains(id)&&id.equals(Userid1)))
+                if(!(requestsSendersIDs.contains(id)||blockedUsersIDs.contains(id)||userfriendsIDS.contains(id)||suggestedFriendsIDs.contains(id)||id.equals(Userid1)))
                     suggestedFriendsIDs.add(id);
              
             }

@@ -1,1 +1,32 @@
-[]
+[
+    {
+        "senderID": "47d5973d-d4c6-4605-bcd5-694eb2339b6e",
+        "receiverID": "446c0781-b3f7-48c4-a4c9-88f0c24e815f",
+        "requestStatus": "pending"
+    },
+    {
+        "senderID": "47d5973d-d4c6-4605-bcd5-694eb2339b6e",
+        "receiverID": "446c0781-b3f7-48c4-a4c9-88f0c24e815f",
+        "requestStatus": "pending"
+    },
+    {
+        "senderID": "47d5973d-d4c6-4605-bcd5-694eb2339b6e",
+        "receiverID": "446c0781-b3f7-48c4-a4c9-88f0c24e815f",
+        "requestStatus": "pending"
+    },
+    {
+        "senderID": "47d5973d-d4c6-4605-bcd5-694eb2339b6e",
+        "receiverID": "446c0781-b3f7-48c4-a4c9-88f0c24e815f",
+        "requestStatus": "pending"
+    },
+    {
+        "senderID": "47d5973d-d4c6-4605-bcd5-694eb2339b6e",
+        "receiverID": "60134f4c-7fb1-4706-9aec-563ce869ccaf",
+        "requestStatus": "pending"
+    },
+    {
+        "senderID": "eb899a2e-9cd1-45da-8166-49d5a7d2b150",
+        "receiverID": "60134f4c-7fb1-4706-9aec-563ce869ccaf",
+        "requestStatus": "pending"
+    }
+]
