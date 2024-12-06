@@ -109,7 +109,7 @@ public class StoryDataBase {
         } catch (JSONException e) {
             System.err.println("Error parsing JSON data: " + e.getMessage());
         }
-        return validStories;
+        return stories;
     }
 
     public ArrayList<Story> ViewUserStories(String userId) {
