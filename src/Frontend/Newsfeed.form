@@ -33,9 +33,9 @@
                   <Component id="ManageFriends" min="-2" max="-2" attributes="0"/>
                   <Component id="newsfeedLabel" min="-2" pref="120" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
-              <Component id="Addpost" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <Component id="addPost" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="addstory" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Component id="btnVisitProfile" min="-2" max="-2" attributes="0"/>
@@ -55,8 +55,8 @@
                   <Component id="ManageFriends" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnVisitProfile" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="logout" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Addpost" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="addstory" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addPost" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="321" max="32767" attributes="0"/>
           </Group>
@@ -111,20 +111,6 @@
         <Property name="text" type="java.lang.String" value="Newsfeed"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Addpost">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="ff" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Add Post"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddpostActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="addstory">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -137,6 +123,20 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addstoryActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="addPost">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="ff" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Add Post"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPostActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

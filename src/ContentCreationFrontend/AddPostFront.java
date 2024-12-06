@@ -8,6 +8,7 @@ import ContentCreationBackend.PostDataBase;
 import ContentCreationBackend.Content;
 import ContentCreationBackend.FactoryContent;
 import ContentCreationBackend.Post;
+import Frontend.Newsfeed;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import UserManagementBackend.UserDataBase;
@@ -146,7 +147,10 @@ public class AddPostFront extends javax.swing.JFrame {
 
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
         // TODO add your handling code here:
+        
         this.dispose();
+        Newsfeed news=new Newsfeed();
+        news.setVisible(true);
     }//GEN-LAST:event_CancelBtnActionPerformed
 
     private void ShareBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShareBtnActionPerformed
