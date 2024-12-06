@@ -24,8 +24,26 @@ import org.json.JSONObject;
 
 public class PostDataBase {
 
-    ArrayList<Post> posts = new ArrayList<>();
+    private static PostDataBase instance; // Singleton instance
+    private ArrayList<Post> posts = new ArrayList<>();
 
+    // Private constructor to prevent instantiation
+    private PostDataBase() {
+    }
+
+    // Public static method to get the singleton instance
+    public static PostDataBase getInstance() {
+        if (instance == null) {
+//            synchronized (PostDataBase.class) { //  synchronizing a block of code on the Class object of the PostDataBase class.
+//                if (instance == null) {
+                    instance = new PostDataBase();
+//                }
+//            }
+        }
+        return instance;
+    }
+
+    // ArrayList<Post> posts = new ArrayList<>();
     public void SavePostsToFile(ArrayList<Post> newPosts) {
         // Read existing posts from file
         ArrayList<Post> existingPosts = ReadPostsFromFile();
@@ -87,6 +105,31 @@ public class PostDataBase {
             System.err.println("Error parsing JSON data: " + e.getMessage());
         }
         return posts;
+    }
+
+    public ArrayList<Post> ViewUserPosts(String userId) {
+        Post post = new Post();
+        ArrayList<Post> userPosts = new ArrayList<>();
+       // ArrayList<Post> allPosts = ReadPostsFromFile();
+        ArrayList<Post> allPosts = ReadPostsFromFile();
+        for (Post p : allPosts) {
+            if (userId.equals(p.getAuthorID())) {
+                userPosts.add(p);
+            }
+        }
+        return userPosts;
+    }
+
+    public ArrayList<Post> ViewFriendsPosts(String userId) {
+
+        ArrayList<Post> friendsPosts = new ArrayList<>();
+        ArrayList<Post> allPosts = ReadPostsFromFile();
+        for (Post p : allPosts) {
+            if (!userId.equals(p.getAuthorID())) {
+                friendsPosts.add(p);
+            }
+        }
+        return friendsPosts;
     }
 
     public void removedPosts(String contentID) {

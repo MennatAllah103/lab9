@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author yaras
  */
 public class Post extends Content {
-    PostDataBase PDB = new PostDataBase();
+    PostDataBase PDB =  PostDataBase.getInstance();
 
     private ArrayList<Post> postList = new ArrayList<>();
 
