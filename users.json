@@ -1,7 +1,7 @@
 [
     {
         "password": "lzzNWNwv5SWehPbp50OSW1ZJKb/gaXvqc8FedVt1G2E=",
-        "profilePhoto": "defaultProfilePhoto.jpg",
+        "profilePhoto": "defaultProfilePhoto.jpeg",
         "coverPhoto": "defaultCoverPhoto.jpg",
         "bio": "I am just a girl <3",
         "dateOfBirth": "2024-12-03",
@@ -243,8 +243,8 @@
     },
     {
         "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
-        "profilePhoto": "defaultProfilePhoto.jpeg",
-        "coverPhoto": "defaultCoverPhoto.jpg",
+        "profilePhoto": "C:\\Users\\LENOVO\\Downloads\\download (1).jpeg",
+        "coverPhoto": "C:\\Users\\LENOVO\\Downloads\\download.jpg",
         "bio": "",
         "dateOfBirth": "2024-12-05",
         "userId": "df2c3bc4-27c2-4934-bef3-f698ca3f8a8c",

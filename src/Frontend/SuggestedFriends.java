@@ -9,6 +9,7 @@ import UserManagementBackend.*;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +21,7 @@ public class SuggestedFriends extends javax.swing.JFrame {
     User currentuser;
     Management manage;
     UserDataBase userDB =UserDataBase.getDatabase();
+    RequestsDatabase  requestsDB=RequestsDatabase.getinstance();
    
     /**
      * Creates new form SuggestedFriends
@@ -35,9 +37,13 @@ public class SuggestedFriends extends javax.swing.JFrame {
 
     public void fillList()
     {
-       
+      
+        requestsDB.loadFile();
+        
+         ArrayList<String> suggestedIDs= manage.getSuggestedFriends(currentuser.getUserId());
+         
        DefaultListModel<String> model=new DefaultListModel();
-       ArrayList<String> suggestedIDs= manage.getSuggestedFriends(currentuser.getUserId());
+      
        for(String ID : suggestedIDs)
        {
            User u = userDB.getUserById(ID);
@@ -45,7 +51,7 @@ public class SuggestedFriends extends javax.swing.JFrame {
            model.addElement(username);
        }
         
-       JList<String> list=new JList<>(model);
+        list.setModel(model);
        jScrollPane1.setViewportView(list);
         
     }
@@ -135,14 +141,27 @@ public class SuggestedFriends extends javax.swing.JFrame {
 
     private void sendrequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendrequestActionPerformed
         // TODO add your handling code here:
+       
+               int index= list.getSelectedIndex();
+     if(index>-1)
+     {
          String selectedusername=list.getSelectedValue();
          User u = userDB.getUserByUsername(selectedusername);
-         String receiverid=u.getUserId();
-         String SenderId=currentuser.getUserId();
-         
+        String receiverid=u.getUserId();
+     String SenderId=currentuser.getUserId();
+     
          Requests R = new Requests (SenderId,receiverid);
          manage.addrequest(R);
-         fillList();
+    
+      fillList();  
+     }
+     
+     else
+     {
+          JOptionPane.showMessageDialog(this, "You Should Select a request", "  Message ", JOptionPane.PLAIN_MESSAGE);
+     }
+       
+        
          
     }//GEN-LAST:event_sendrequestActionPerformed
 

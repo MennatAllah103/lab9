@@ -184,13 +184,24 @@ public class ViewRequests extends javax.swing.JFrame {
 
     private void DeclineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeclineButtonActionPerformed
         // TODO add your handling code here:
-        String selectedusername=listreq.getSelectedValue();
-        User userDeclined=userDB.getUserByUsername(selectedusername);
+        int index= listreq.getSelectedIndex();
+     if(index>-1)
+     {
+         String selectedusername=listreq.getSelectedValue();
+          User userDeclined=userDB.getUserByUsername(selectedusername);
         String senderid=userDeclined.getUserId();
-        String receiverid=currentuser.getUserId();
+      String receiverid=currentuser.getUserId();
       Requests R=manage.getRequest(senderid, receiverid);
-      manage.declinerequest(R);
-      fillList();
+       manage.declinerequest(R);
+      fillList();  
+     }
+     
+     else
+     {
+          JOptionPane.showMessageDialog(this, "You Should Select a request", "  Message ", JOptionPane.PLAIN_MESSAGE);
+     }
+       
+
     }//GEN-LAST:event_DeclineButtonActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

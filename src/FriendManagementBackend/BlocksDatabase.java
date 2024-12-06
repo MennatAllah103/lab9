@@ -25,6 +25,8 @@ public class BlocksDatabase {
     ArrayList<BlockedUsers> blocks = new ArrayList<>();
 
     private BlocksDatabase() {
+        
+        blocks=loadFile();
     }
     
        public static BlocksDatabase getinstance() {
@@ -42,8 +44,8 @@ public class BlocksDatabase {
             JSONArray blocksArray = new JSONArray(json);
             for (int i = 0; i < blocksArray.length(); i++) {
                 JSONObject blockJson = blocksArray.getJSONObject(i);
-                String Blocker = blockJson.getString("senderID");
-                String Blocked = blockJson.getString("receiverID");
+                String Blocker = blockJson.getString("Blocker");
+                String Blocked = blockJson.getString("Blocked");
                 blocks.add(new BlockedUsers(Blocker, Blocked));
 
             }
