@@ -4,6 +4,8 @@
  */
 package Frontend;
 
+import ContentCreationFrontend.AddPostFront;
+import ContentCreationFrontend.AddStoryFront;
 import ProfileManagmentFrontend.ViewProfile;
 import UserManagementBackend.User;
 import UserManagementBackend.UserDataBase;
@@ -72,6 +74,11 @@ public class Newsfeed extends javax.swing.JFrame {
         Addpost.setBackground(new java.awt.Color(255, 204, 255));
         Addpost.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Addpost.setText("Add Post");
+        Addpost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddpostActionPerformed(evt);
+            }
+        });
 
         addstory.setBackground(new java.awt.Color(255, 204, 255));
         addstory.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -139,7 +146,20 @@ public class Newsfeed extends javax.swing.JFrame {
 
     private void addstoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addstoryActionPerformed
         // TODO add your handling code here:
+        AddStoryFront story=new AddStoryFront();
+        story.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_addstoryActionPerformed
+
+    private void AddpostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddpostActionPerformed
+        // TODO add your handling code here:
+         AddPostFront post=new AddPostFront();
+        post.setVisible(true);
+        this.dispose();
+        
+        
+        
+    }//GEN-LAST:event_AddpostActionPerformed
 
   
  
