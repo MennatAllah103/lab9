@@ -251,5 +251,16 @@
         "email": "mohamedgenaidy@gmail.com",
         "username": "mohamed123",
         "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "C:\\Users\\hp\\Downloads\\pfp.jpg",
+        "coverPhoto": "C:\\Users\\hp\\Downloads\\coverphoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-04",
+        "userId": "e5e860ae-7ad2-402b-aca9-88a680d0d5a2",
+        "email": "hi@hotmail.com",
+        "username": "hi",
+        "status": "online"
     }
 ]
