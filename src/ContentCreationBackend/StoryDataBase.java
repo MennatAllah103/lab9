@@ -72,7 +72,7 @@ public class StoryDataBase {
     }
 
     public ArrayList<Story> ReadStoriesFromFile() {
-        ArrayList<Story> validStories = new ArrayList<>();
+       
         try {
             String json = new String(Files.readAllBytes(Paths.get("stories.json")));
             JSONArray storiesArray = new JSONArray(json);
