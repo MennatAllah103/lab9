@@ -214,9 +214,6 @@ public class UserSignup extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Signup failed! Email or username might already be in use.", "Message", JOptionPane.ERROR_MESSAGE);
     } 
     
-      
-      
-      
     }//GEN-LAST:event_signupActionPerformed
 
     private void usernametextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernametextActionPerformed
@@ -228,7 +225,7 @@ public class UserSignup extends javax.swing.JFrame {
     }//GEN-LAST:event_confirmpasswordtextActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-       home.setVisible(true);
+     //  home.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
 

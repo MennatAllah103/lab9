@@ -4,12 +4,9 @@
  */
 package UserManagementBackend;
 
-
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.util.UUID;
-
-
 
 /**
  *
@@ -17,46 +14,46 @@ import java.util.UUID;
  */
 public class UserLog {
 
-    
     UserDataBase database;
 
     public UserLog(UserDataBase database) {
-       
+
         this.database = UserDataBase.getDatabase();
     }
 
-   public boolean signup(String email, String password, LocalDate dateOfBirth, String username) {
-    try {
-        // Check if email is already registered (assuming a method exists for this)
-        if (database.getUserByEmail(email) != null) {
-            // Email already exists in the database
+    public boolean signup(String email, String password, LocalDate dateOfBirth, String username) {
+        try {
+            // Check if email is already registered (assuming a method exists for this)
+            if (database.getUserByEmail(email) != null) {
+                // Email already exists in the database
+                return false;
+            }
+
+            // Hash the password
+            String hashedPassword = PasswordHashing.hashPassword(password);
+
+            // Create a new User object using the builder pattern
+            User user = new User.Builder(email, dateOfBirth, hashedPassword, username)
+                    .status(false)
+                    .profilePhoto("defaultProfilePhoto.jpeg") // Set default profile photo path
+                    .coverPhoto("defaultCoverPhoto.jpg")
+                    .build();
+
+            // Attempt to add the user to the database
+            boolean addUser = database.addUser(user);
+
+            // Return whether the user was successfully added
+            return addUser;
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return false;
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
-
-        // Hash the password
-        String hashedPassword = PasswordHashing.hashPassword(password);
-
-        // Create a new User object using the builder pattern
-        User user = new User.Builder(email, dateOfBirth, hashedPassword, username)
-                        .status(false)  // Default to 'offline' status (you can change it as needed)
-                        .build();
-
-        // Attempt to add the user to the database
-        boolean addUser = database.addUser(user);
-
-        // Return whether the user was successfully added
-        return addUser;
-
-    } catch (NoSuchAlgorithmException e) {
-        e.printStackTrace();
-        return false;
-    } catch (Exception e) {
-        e.printStackTrace();
-        return false;
     }
-}
 
-   
     public static boolean isValidEmail(String email) {
         // Check if the email is null
         if (email == null) {
@@ -78,7 +75,7 @@ public class UserLog {
 
         // Check if the '@' symbol is present
         if (atSymbolIndex == -1) {
-           // System.out.println("Invalid email. The email must contain the '@' symbol.");
+            // System.out.println("Invalid email. The email must contain the '@' symbol.");
             return false;
         }
 
@@ -98,78 +95,62 @@ public class UserLog {
 
         // Check if the dot is directly after the '@' symbol
         if (dotIndex == atSymbolIndex + 1) {
-           // System.out.println("Invalid email. The '.' cannot be directly after the '@' symbol.");
+            // System.out.println("Invalid email. The '.' cannot be directly after the '@' symbol.");
             return false;
         }
 
         // Check for a valid domain (at least one '.' after '@')
         if (dotIndex == -1 || dotIndex >= length - 1) {
-           // System.out.println("Invalid email. The domain should have at least one character after '.'");
+            // System.out.println("Invalid email. The domain should have at least one character after '.'");
             return false;
         }
 
         return true;  // Valid email
     }
-    public static boolean isValidPassword (String password,String Confirm)
-    {
-        if(password.equals(Confirm))
+
+    public static boolean isValidPassword(String password, String Confirm) {
+        if (password.equals(Confirm)) {
             return true;
+        }
         return false;
     }
-    
-   public void logOut(User user) {
-    
-    database.updateStatus(user.getUserId(), false);
-    
-  
-   }
-    
-    
- 
- public User login(String email, String password, String username) {
-    try {
-        User user = database.getUserByEmail(email);    
-        if (user == null) {
-            
-            return null;
-        }
-        
-        if (!user.getUsername().equals(username)) {
-            
-            return null;
-        }
-        
-        if (!PasswordHashing.validatePassword(password, user.getPassword())) {
-          
-            return null;
-        }
-        
-        database.updateStatus(user.getUserId(),true);
-        return user;
-    } catch (NoSuchAlgorithmException e) {
-        System.err.println("Error hashing password: " + e.getMessage());
-        e.printStackTrace();
-        return null;
-    } catch (Exception e) {
-        System.err.println("An unexpected error occurred: " + e.getMessage());
-        e.printStackTrace();
-        return null;
+
+    public void logOut(User user) {
+
+        database.updateStatus(user.getUserId(), false);
+
     }
-   
 
-    
-    
- 
-   
-}
+    public User login(String email, String password, String username) {
+        try {
+            User user = database.getUserByEmail(email);
+            if (user == null) {
 
+                return null;
+            }
 
- 
- 
- 
- 
- 
- 
- 
- 
+            if (!user.getUsername().equals(username)) {
+
+                return null;
+            }
+
+            if (!PasswordHashing.validatePassword(password, user.getPassword())) {
+
+                return null;
+            }
+
+            database.updateStatus(user.getUserId(), true);
+            return user;
+        } catch (NoSuchAlgorithmException e) {
+            System.err.println("Error hashing password: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
 }

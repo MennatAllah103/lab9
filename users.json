@@ -196,5 +196,49 @@
         "email": "adhd12@hotmail.com",
         "username": "adhd1205",
         "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-02",
+        "userId": "690f0e2b-e109-4212-912f-a6e64cbcc0b2",
+        "email": "hey@hotmail.com",
+        "username": "hey",
+        "status": "offline"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "C:\\Users\\hp\\Downloads\\pfp.jpg",
+        "coverPhoto": "C:\\Users\\hp\\Downloads\\coverphoto.jpg",
+        "bio": "testing",
+        "dateOfBirth": "2024-12-01",
+        "userId": "d053285c-a199-4eeb-a46e-328e5d3ee78c",
+        "email": "ok@hotmail.com",
+        "username": "ok",
+        "status": "offline"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "C:\\Users\\hp\\Downloads\\pfp.jpg",
+        "coverPhoto": "C:\\Users\\hp\\Downloads\\coverphoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-02",
+        "userId": "c5379fdd-99fc-49ea-913a-d59932708b8d",
+        "email": "ay@hotmail.com",
+        "username": "ay",
+        "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpeg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-02",
+        "userId": "795e61ca-57b2-4bd9-851f-168764227d15",
+        "email": "dd@hotmail.com",
+        "username": "dd",
+        "status": "online"
     }
 ]
