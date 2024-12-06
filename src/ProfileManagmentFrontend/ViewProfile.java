@@ -44,16 +44,12 @@ public class ViewProfile extends javax.swing.JFrame {
         String defaultProfilePhoto = "defaultProfilePhoto.jpeg";
         if (profilePhotoPath != null && !profilePhotoPath.equals(defaultProfilePhoto)) {
             profilePhotoLabel.setIcon(new ImageIcon(new ImageIcon(profilePhotoPath).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
-        } else {
-            profilePhotoLabel.setIcon(new ImageIcon(getClass().getResource(defaultProfilePhoto)));
-        }
+        } 
         String coverPhotoPath = UserDataBase.getCurrentUser().getCoverPhoto();
         String defaultCoverPhoto = "defaultCoverPhoto.jpg";
         if (coverPhotoPath != null && !coverPhotoPath.equals(defaultCoverPhoto)) {
             coverPhotoLabel.setIcon(new ImageIcon(new ImageIcon(coverPhotoPath).getImage().getScaledInstance(712, 136, Image.SCALE_SMOOTH)));
-        } else {
-            coverPhotoLabel.setIcon(new ImageIcon(getClass().getResource(defaultCoverPhoto)));
-        }
+        } 
     }
     
 //     private void loadPosts() {

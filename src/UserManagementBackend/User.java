@@ -114,7 +114,7 @@ public class User {
         private String password;
         private boolean status;
         private String username;
-        private String profilePhoto = "defaultProfilePhoto.jpg"; // default value
+        private String profilePhoto = "defaultProfilePhoto.jpeg"; // default value
         private String coverPhoto = "defaultCoverPhoto.jpg";     // default value
         private String bio = "";                                 // default value
 

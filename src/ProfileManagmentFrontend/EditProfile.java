@@ -39,16 +39,12 @@ public class EditProfile extends javax.swing.JFrame {
         String defaultProfilePhoto = "defaultProfilePhoto.jpeg";
         if (profilePhotoPath != null && !profilePhotoPath.equals(defaultProfilePhoto)) {
             profilePhotoLabel.setIcon(new ImageIcon(new ImageIcon(profilePhotoPath).getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
-        } else {
-            profilePhotoLabel.setIcon(new ImageIcon(getClass().getResource(defaultProfilePhoto)));
-        }
+        } 
         String coverPhotoPath = UserDataBase.getCurrentUser().getCoverPhoto();
         String defaultCoverPhoto = "defaultCoverPhoto.jpg";
         if (coverPhotoPath != null && !coverPhotoPath.equals(defaultCoverPhoto)) {
             coverPhotoLabel.setIcon(new ImageIcon(new ImageIcon(coverPhotoPath).getImage().getScaledInstance(712, 136, Image.SCALE_SMOOTH)));
-        } else {
-            coverPhotoLabel.setIcon(new ImageIcon(getClass().getResource(defaultCoverPhoto)));
-        }
+        } 
     }
 
     /**
@@ -160,14 +156,15 @@ public class EditProfile extends javax.swing.JFrame {
                                         .addComponent(profilePhotoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(usernameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                         .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(coverPhotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 684, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUploadCoverPhoto)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnUploadCoverPhoto))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSaveBio, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnSaveBio, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(141, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -181,7 +178,9 @@ public class EditProfile extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(coverPhotoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUploadCoverPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnUploadCoverPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(usernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -192,9 +191,7 @@ public class EditProfile extends javax.swing.JFrame {
                 .addComponent(bioScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSaveBio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(btnChangePassword, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
