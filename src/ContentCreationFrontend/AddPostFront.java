@@ -25,12 +25,10 @@ import javax.swing.JOptionPane;
 public class AddPostFront extends javax.swing.JFrame {
 
     private String selectedImagePath;
-    //Post P= new Post();
-    /**
-     * Creates new form PostFront
-     */
-    public AddPostFront() {
+    Newsfeed n;
+    public AddPostFront(Newsfeed n) {
         initComponents();
+        this.n = n;
     }
 
     /**
@@ -51,8 +49,13 @@ public class AddPostFront extends javax.swing.JFrame {
         imageAdded = new javax.swing.JLabel();
         ImageAddBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Post");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         EnteredText.setColumns(20);
         EnteredText.setRows(5);
@@ -105,11 +108,8 @@ public class AddPostFront extends javax.swing.JFrame {
                         .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ImageAddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(42, 42, 42)))
@@ -146,21 +146,19 @@ public class AddPostFront extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
-        // TODO add your handling code here:
-        
+   
         this.dispose();
-        Newsfeed news=new Newsfeed();
-        news.setVisible(true);
+        n.setVisible(true);
     }//GEN-LAST:event_CancelBtnActionPerformed
 
     private void ShareBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShareBtnActionPerformed
-        // TODO add your handling code here:
+       
         FactoryContent F = new FactoryContent();
         UserDataBase currentUserDb = UserDataBase.getDatabase();
-        User currentUser = currentUserDb.getCurrentUser();// Get the logged-in User object
+        User currentUser = currentUserDb.getCurrentUser();
         if (currentUser == null) {
             JOptionPane.showMessageDialog(this, "No user is currently logged in.", "Message", JOptionPane.ERROR_MESSAGE);
-            return; // Exit if no user is logged in
+            return; 
         }
         String text = EnteredText.getText();
 
@@ -194,6 +192,10 @@ public class AddPostFront extends javax.swing.JFrame {
             imageAdded.setIcon(scaledIcon);
         }
     }//GEN-LAST:event_ImageAddBtnActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        n.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
    
 

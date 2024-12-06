@@ -18,13 +18,14 @@ public class ManageFriends extends javax.swing.JFrame {
 
     Newsfeed newsfeed;
     User currentuser;
-    Management manage = new Management();
+    Management manage;
     UserDataBase userDB =UserDataBase.getDatabase();
 
-    public ManageFriends(Newsfeed newsfeed , User currentuser) {
+    public ManageFriends(Newsfeed newsfeed , User currentuser, Management manage) {
         initComponents();
        this.newsfeed=newsfeed;
        this.currentuser=currentuser;
+       this.manage = manage;
         
     }
 
