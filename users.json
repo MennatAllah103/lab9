@@ -1,8 +1,8 @@
 [
     {
         "password": "lzzNWNwv5SWehPbp50OSW1ZJKb/gaXvqc8FedVt1G2E=",
-        "profilePhoto": "C:\\Users\\LENOVO\\Downloads\\download (2).jpg",
-        "coverPhoto": "C:\\Users\\LENOVO\\Downloads\\download (4).jpeg",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
         "bio": "I am just a girl <3",
         "dateOfBirth": "2024-12-03",
         "userId": "1fd7d48f-5798-4a85-b113-7dbcc64fcbc5",
@@ -239,6 +239,17 @@
         "userId": "795e61ca-57b2-4bd9-851f-168764227d15",
         "email": "dd@hotmail.com",
         "username": "dd",
+        "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpeg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-05",
+        "userId": "df2c3bc4-27c2-4934-bef3-f698ca3f8a8c",
+        "email": "mohamedgenaidy@gmail.com",
+        "username": "mohamed123",
         "status": "online"
     }
 ]
