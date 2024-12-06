@@ -6,6 +6,7 @@ package Frontend;
 
 import ContentCreationFrontend.AddPostFront;
 import ContentCreationFrontend.AddStoryFront;
+import FriendManagementBackend.Management;
 import ProfileManagmentFrontend.ViewProfile;
 import UserManagementBackend.User;
 import UserManagementBackend.UserDataBase;
@@ -22,6 +23,7 @@ public class Newsfeed extends javax.swing.JFrame {
      User user =UserDataBase.getCurrentUser();
      UserLog log=new UserLog(UserDataBase.getDatabase());
      Home home=Home.getInstance();
+     Management manage = new Management();
     public Newsfeed() {
         initComponents();
         
@@ -139,7 +141,7 @@ public class Newsfeed extends javax.swing.JFrame {
 
     private void btnVisitProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitProfileActionPerformed
         
-        ViewProfile p = new ViewProfile(this);
+        ViewProfile p = new ViewProfile(this, manage);
         p.setVisible(true);
     }//GEN-LAST:event_btnVisitProfileActionPerformed
 
@@ -154,7 +156,7 @@ public class Newsfeed extends javax.swing.JFrame {
 
     private void addstoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addstoryActionPerformed
      
-         AddStoryFront story=new AddStoryFront();
+        AddStoryFront story=new AddStoryFront(this);
         story.setVisible(true);
         this.setVisible(false);
         
@@ -165,8 +167,8 @@ public class Newsfeed extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void addPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPostActionPerformed
-        // TODO add your handling code here:
-        AddPostFront post=new AddPostFront();
+
+        AddPostFront post=new AddPostFront(this);
         post.setVisible(true);
         this.setVisible(false);
         
@@ -175,8 +177,8 @@ public class Newsfeed extends javax.swing.JFrame {
 
     private void ManageFriendsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageFriendsActionPerformed
         // TODO add your handling code here:
-        ManageFriends manage= new ManageFriends(this,user);
-        manage.setVisible(true);
+        ManageFriends manager = new ManageFriends(this, user, manage);
+        manager.setVisible(true);
         this.dispose();
         home.setVisible(false);
         
