@@ -262,5 +262,16 @@
         "email": "hi@hotmail.com",
         "username": "hi",
         "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "defaultProfilePhoto.jpeg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-12",
+        "userId": "15a32581-1203-472f-aef1-528a0be9665d",
+        "email": "test@hotmail.com",
+        "username": "test",
+        "status": "offline"
     }
 ]

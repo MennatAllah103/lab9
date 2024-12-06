@@ -76,8 +76,6 @@ public class ViewProfile extends javax.swing.JFrame {
         postsPanel.revalidate();
         postsPanel.repaint();
 
-        System.out.println("Total posts displayed: " + postsPanel.getComponentCount());
-
     }
 
     private void loadFriendsList() {

@@ -182,7 +182,7 @@ public class UserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_loginActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        //home.setVisible(true);
+        home.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
 
