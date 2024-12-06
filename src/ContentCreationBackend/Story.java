@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Story extends Content {
 
     private ArrayList<Story> storyList = new ArrayList<>();
-StoryDataBase SDB = new StoryDataBase();
+StoryDataBase SDB = StoryDataBase.getInstance();
     public void addStory(Story s) {
         storyList.add(s);
         SDB.SaveStoriesToFile(storyList);

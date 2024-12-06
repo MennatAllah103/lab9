@@ -4,6 +4,16 @@
  */
 package ContentCreationFrontend;
 
+import ContentCreationBackend.FactoryContent;
+import ContentCreationBackend.Post;
+import ContentCreationBackend.PostDataBase;
+import UserManagementBackend.User;
+import UserManagementBackend.UserDataBase;
+import java.awt.Image;
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author yaras
@@ -15,6 +25,22 @@ public class ViewPost extends javax.swing.JFrame {
      */
     public ViewPost() {
         initComponents();
+      //  Post p = new Post();
+        PostDataBase PDB = PostDataBase.getInstance();
+        UserDataBase currentUserDb = UserDataBase.getDatabase();
+        User currentUser = currentUserDb.getCurrentUser();// Get the logged-in User object
+        // Clear previous content
+    TextLabel.setText("");
+        if (currentUser == null) {
+            JOptionPane.showMessageDialog(this, "No user is currently logged in.", "Message", JOptionPane.ERROR_MESSAGE);
+            return; // Exit if no user is logged in
+        }
+        ArrayList<Post> userPosts = PDB.ViewUserPosts(currentUser.getUserId());
+        for (Post post : userPosts){
+        ImageIcon imageIcon = new ImageIcon(post.getImagePath());
+        ImageLabel.setIcon(imageIcon);
+        TextLabel.setText(post.getContent());
+        }
     }
 
     /**
@@ -26,22 +52,48 @@ public class ViewPost extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ImageLabel = new javax.swing.JLabel();
+        TextLabel = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jScrollPane1.setForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(ImageLabel);
+
+        TextLabel.setBackground(new java.awt.Color(255, 153, 102));
+        TextLabel.setForeground(new java.awt.Color(255, 0, 51));
+        jScrollPane1.setViewportView(TextLabel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(474, 474, 474)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ImageLabel;
+    private javax.swing.JLabel TextLabel;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

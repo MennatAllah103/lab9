@@ -22,8 +22,26 @@ import org.json.JSONObject;
  * @author yaras
  */
 public class StoryDataBase {
+     private static StoryDataBase instance; // Singleton instance
+    private ArrayList<Story> stories = new ArrayList<>();
 
-    ArrayList<Story> stories = new ArrayList<>();
+    // Private constructor to prevent instantiation
+    private StoryDataBase() {}
+
+    // Public static method to get the singleton instance
+    public static StoryDataBase getInstance() {
+        if (instance == null) {
+            synchronized (StoryDataBase.class) { // Ensure thread safety
+                if (instance == null) {
+                    instance = new StoryDataBase();
+                }
+            }
+        }
+        return instance;
+    }
+
+
+  //  ArrayList<Story> stories = new ArrayList<>();
 
     public void SaveStoriesToFile(ArrayList<Story> newStories) {
         ArrayList<Story> existingStories = ReadStoriesFromFile();
@@ -87,6 +105,30 @@ public class StoryDataBase {
             System.err.println("Error parsing JSON data: " + e.getMessage());
         }
         return stories;
+    }
+
+    public ArrayList<Story> ViewUserStories(String userId) {
+
+        ArrayList<Story> userStories = new ArrayList<>();
+        ArrayList<Story> allStories = ReadStoriesFromFile();
+        for (Story s : allStories) {
+            if (userId.equals(s.getAuthorID())) {
+                userStories.add(s);
+            }
+        }
+        return userStories;
+    }
+
+    public ArrayList<Story> ViewFriendsStories(String userId) {
+
+        ArrayList<Story> friendStories = new ArrayList<>();
+        ArrayList<Story> allStories = ReadStoriesFromFile();
+        for (Story s : allStories) {
+            if (!userId.equals(s.getAuthorID())) {
+                friendStories.add(s);
+            }
+        }
+        return friendStories;
     }
 
     public void removedstories(String contentID) {
