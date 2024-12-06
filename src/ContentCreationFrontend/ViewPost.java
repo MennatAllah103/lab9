@@ -8,6 +8,7 @@ package ContentCreationFrontend;
  *
  * @author yaras
  */
+import Frontend.Newsfeed;
 import ContentCreationBackend.FactoryContent;
 import ContentCreationBackend.Post;
 import ContentCreationBackend.PostDataBase;
@@ -29,7 +30,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
+import FriendManagementBackend.Management;
 public class ViewPost extends javax.swing.JFrame {
 
     /**
@@ -45,10 +46,10 @@ public class ViewPost extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No user is currently logged in.", "Message", JOptionPane.ERROR_MESSAGE);
             return; // Exit if no user is logged in
         }
-        ArrayList<Post> userPosts = PDB.ViewUserPosts(currentUser.getUserId());
+        ArrayList<Post> friendsPosts = PDB.ViewFriendsPosts(currentUser.getUserId());
         // Clear the panel before adding posts
         jPanel1.removeAll();
-        for (Post post : userPosts) {
+        for (Post post : friendsPosts) {
             // Create a new JLabel for the image
             JLabel imageLabel = new JLabel();
             ImageIcon imageIcon = new ImageIcon(post.getImagePath());
@@ -62,10 +63,11 @@ public class ViewPost extends javax.swing.JFrame {
             textArea.setLineWrap(true);
             textArea.setWrapStyleWord(true);
             LocalDateTime timestamp = post.getTimestamp();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDate = timestamp.format(formatter); // Format the date
+          //  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            //String formattedDate = timestamp.format(formatter); // Format the date
             // Create a JLabel to display the date
-            JLabel dateLabel = new JLabel("Posted on: " + formattedDate);
+            //JLabel dateLabel = new JLabel("Posted on: " + formattedDate);
+            JLabel dateLabel = new JLabel("Posted on: " + timestamp.toString());
             //  JLabel dateLabel = new JLabel("Posted on: " + timestamp.toString());
             dateLabel.setFont(dateLabel.getFont().deriveFont(12f));
             // Create a new JPanel to hold each post's components
@@ -96,7 +98,12 @@ public class ViewPost extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("User Posts");
+        setTitle("Friends Posts");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
         jScrollPane1.setViewportView(jPanel1);
@@ -114,6 +121,12 @@ public class ViewPost extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        new Newsfeed().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

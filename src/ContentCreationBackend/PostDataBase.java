@@ -21,17 +21,15 @@ import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import FriendManagementBackend.Management;
 public class PostDataBase {
 
     private static PostDataBase instance; // Singleton instance
     private ArrayList<Post> posts = new ArrayList<>();
 
-    // Private constructor to prevent instantiation
     private PostDataBase() {
     }
 
-    // Public static method to get the singleton instance
     public static PostDataBase getInstance() {
         if (instance == null) {
 //            synchronized (PostDataBase.class) { //  synchronizing a block of code on the Class object of the PostDataBase class.
@@ -89,7 +87,7 @@ public class PostDataBase {
                     imagePath = postJson.getString("imagePath");
                 } catch (JSONException e) {
                     // Handle the case where "imagePath" is missing
-                    imagePath = "";  // or provide a default value
+                    imagePath = "";
                 }
                 Post post = new Post();
                 post.setContentID(contentID);
@@ -121,26 +119,31 @@ public class PostDataBase {
     }
 
     public ArrayList<Post> ViewFriendsPosts(String userId) {
-
-        ArrayList<Post> friendsPosts = new ArrayList<>();
-        ArrayList<Post> allPosts = ReadPostsFromFile();
-        for (Post p : allPosts) {
-            if (!userId.equals(p.getAuthorID())) {
-                friendsPosts.add(p);
-            }
+    Management management = new Management();
+    ArrayList<String> friendsIds = management.getUserFriendsIDs(userId);
+    
+    ArrayList<Post> friendsPosts = new ArrayList<>();
+    ArrayList<Post> allPosts = ReadPostsFromFile();
+    
+    for (Post post : allPosts) {
+        if (friendsIds.contains(post.getAuthorID())) { // Check if post author is a friend
+            friendsPosts.add(post);
         }
-        return friendsPosts;
     }
+    
+    return friendsPosts;
+}
+
 
     public void removedPosts(String contentID) {
-        posts = ReadPostsFromFile(); // Load posts
+        posts = ReadPostsFromFile();
         for (int i = 0; i < posts.size(); i++) {
             if (posts.get(i).getContentID().equals(contentID)) {
                 posts.remove(i); // Remove the post by matching ID
-                break; // Exit the loop once the post is found and removed
+                break;
             }
         }
-        SavePostsToFile(posts); // Save back to file
+        SavePostsToFile(posts);
     }
 
 }

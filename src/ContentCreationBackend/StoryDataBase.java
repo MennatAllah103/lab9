@@ -4,6 +4,7 @@
  */
 package ContentCreationBackend;
 
+import FriendManagementBackend.Management;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,11 +23,13 @@ import org.json.JSONObject;
  * @author yaras
  */
 public class StoryDataBase {
-     private static StoryDataBase instance; // Singleton instance
+
+    private static StoryDataBase instance; // Singleton instance
     private ArrayList<Story> stories = new ArrayList<>();
 
     // Private constructor to prevent instantiation
-    private StoryDataBase() {}
+    private StoryDataBase() {
+    }
 
     // Public static method to get the singleton instance
     public static StoryDataBase getInstance() {
@@ -40,9 +43,7 @@ public class StoryDataBase {
         return instance;
     }
 
-
-  //  ArrayList<Story> stories = new ArrayList<>();
-
+    //  ArrayList<Story> stories = new ArrayList<>();
     public void SaveStoriesToFile(ArrayList<Story> newStories) {
         ArrayList<Story> existingStories = ReadStoriesFromFile();
 
@@ -71,11 +72,13 @@ public class StoryDataBase {
     }
 
     public ArrayList<Story> ReadStoriesFromFile() {
+        ArrayList<Story> validStories = new ArrayList<>();
         try {
             String json = new String(Files.readAllBytes(Paths.get("stories.json")));
             JSONArray storiesArray = new JSONArray(json);
             DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
             for (int i = 0; i < storiesArray.length(); i++) {
+
                 JSONObject storyJson = storiesArray.getJSONObject(i);
                 String contentID = storyJson.getString("contentID");
                 String authorID = storyJson.getString("authorID");
@@ -96,15 +99,20 @@ public class StoryDataBase {
                 story.setContent(content);
                 story.setTimestamp(LocalDateTime.parse(timeStamp, formatter));
                 story.setImagePath(imagePath);
+                // stories.add(story);
+                if (!story.isExpired()) {
+                    validStories.add(story); // Add to the valid stories list if not expired
+                }
 
-                stories.add(story);
             }
+            // Save the valid (non-expired) stories back to the file
+            SaveStoriesToFile(validStories);
         } catch (IOException e) {
             System.err.println("Error reading stories from file: " + e.getMessage());
         } catch (JSONException e) {
             System.err.println("Error parsing JSON data: " + e.getMessage());
         }
-        return stories;
+        return validStories;
     }
 
     public ArrayList<Story> ViewUserStories(String userId) {
@@ -120,15 +128,19 @@ public class StoryDataBase {
     }
 
     public ArrayList<Story> ViewFriendsStories(String userId) {
+        Management management = new Management();
+        ArrayList<String> friendsIds = management.getUserFriendsIDs(userId);
 
-        ArrayList<Story> friendStories = new ArrayList<>();
+        ArrayList<Story> friendsStories = new ArrayList<>();
         ArrayList<Story> allStories = ReadStoriesFromFile();
-        for (Story s : allStories) {
-            if (!userId.equals(s.getAuthorID())) {   // condition will be edited after dareen send friends
-                friendStories.add(s);
+
+        for (Story story : allStories) {
+            if (friendsIds.contains(story.getAuthorID())) { // Check if post author is a friend
+                friendsStories.add(story);
             }
         }
-        return friendStories;
+
+        return friendsStories;
     }
 
     public void removedstories(String contentID) {

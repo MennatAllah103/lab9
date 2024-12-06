@@ -5,6 +5,7 @@
 package ContentCreationFrontend;
 import ContentCreationBackend.Story;
 import ContentCreationBackend.StoryDataBase;
+import Frontend.Newsfeed;
 import UserManagementBackend.User;
 import UserManagementBackend.UserDataBase;
 import java.awt.Image;
@@ -36,10 +37,10 @@ StoryDataBase SDB = StoryDataBase.getInstance();
             JOptionPane.showMessageDialog(this, "No user is currently logged in.", "Message", JOptionPane.ERROR_MESSAGE);
             return; // Exit if no user is logged in
         }
-        ArrayList<Story> userStories = SDB.ViewUserStories(currentUser.getUserId());
+        ArrayList<Story> friendStories = SDB.ViewFriendsStories(currentUser.getUserId());
         // Clear the panel before adding posts
         jPanel1.removeAll();
-        for (Story story : userStories) {
+        for (Story story : friendStories) {
             // Create a new JLabel for the image
             JLabel imageLabel = new JLabel();
             ImageIcon imageIcon = new ImageIcon(story.getImagePath());
@@ -53,10 +54,11 @@ StoryDataBase SDB = StoryDataBase.getInstance();
             textArea.setLineWrap(true);
             textArea.setWrapStyleWord(true);
             LocalDateTime timestamp = story.getTimestamp();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDate = timestamp.format(formatter); // Format the date
+           // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+         //   String formattedDate = timestamp.format(formatter); // Format the date
             // Create a JLabel to display the date
-            JLabel dateLabel = new JLabel("Posted on: " + formattedDate);
+           // JLabel dateLabel = new JLabel("Posted on: " + formattedDate);
+            JLabel dateLabel = new JLabel("Posted on: " + timestamp.toString());
             //  JLabel dateLabel = new JLabel("Posted on: " + timestamp.toString());
             dateLabel.setFont(dateLabel.getFont().deriveFont(12f));
             // Create a new JPanel to hold each story's components
@@ -82,7 +84,12 @@ StoryDataBase SDB = StoryDataBase.getInstance();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("User Stories");
+        setTitle("Friends Stories");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -109,6 +116,12 @@ StoryDataBase SDB = StoryDataBase.getInstance();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        new Newsfeed().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

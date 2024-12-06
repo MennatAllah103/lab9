@@ -273,5 +273,27 @@
         "email": "test@hotmail.com",
         "username": "test",
         "status": "offline"
+    },
+    {
+        "password": "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=",
+        "profilePhoto": "defaultProfilePhoto.jpeg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-10-20",
+        "userId": "e7ed9260-3b59-4ca0-9b4f-f6ef7d607a4f",
+        "email": "yara@hotmail.com",
+        "username": "yora",
+        "status": "online"
+    },
+    {
+        "password": "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=",
+        "profilePhoto": "defaultProfilePhoto.jpeg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-22",
+        "userId": "00ff2f87-3187-458b-a132-628582ff5e75",
+        "email": "yayaa@a.com",
+        "username": "yayaa",
+        "status": "online"
     }
 ]

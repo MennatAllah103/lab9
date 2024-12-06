@@ -36,13 +36,11 @@ StoryDataBase SDB = StoryDataBase.getInstance();
 
     public void deleteStory(Story s) {
         storyList.remove(s);
-        // ArrayList<Story> expiredStories = new ArrayList<>();
-//        for (Story s : expiredStories) {
-//            if (s.isExpired()) {
-//                expiredStories.add(s);
-//            }
-//
-//        }
-//        storyList.removeAll(expiredStories);
+//         ArrayList<Story> stories = SDB.ReadStoriesFromFile() ;
+//         for (int i =0 ; i< stories.size();i++)
+//         {
+//             Story s = stories.get(i);
+//             Duration duration = Duration.between(p.ge, timestamp)
+//         }
     }
 }
