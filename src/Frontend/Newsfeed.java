@@ -43,6 +43,11 @@ public class Newsfeed extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Newsfeed");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         btnVisitProfile.setBackground(new java.awt.Color(255, 204, 255));
         btnVisitProfile.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -59,7 +64,7 @@ public class Newsfeed extends javax.swing.JFrame {
 
         logout.setBackground(new java.awt.Color(255, 204, 255));
         logout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        logout.setText("Log Out");
+        logout.setText("Logout");
         logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutActionPerformed(evt);
@@ -88,20 +93,18 @@ public class Newsfeed extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newsfeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(ManageFriends)
-                        .addGap(44, 44, 44)
-                        .addComponent(Addpost)
-                        .addGap(34, 34, 34)
-                        .addComponent(addstory)
-                        .addGap(52, 52, 52)
-                        .addComponent(btnVisitProfile)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ManageFriends)
+                    .addComponent(newsfeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(Addpost)
+                .addGap(34, 34, 34)
+                .addComponent(addstory)
+                .addGap(36, 36, 36)
+                .addComponent(btnVisitProfile)
+                .addGap(39, 39, 39)
                 .addComponent(logout)
-                .addGap(21, 21, 21))
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,27 +122,31 @@ public class Newsfeed extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVisitProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisitProfileActionPerformed
-        // TODO add your handling code here:
+
         ViewProfile profile = new ViewProfile(this);
         profile.setVisible(true);
     }//GEN-LAST:event_btnVisitProfileActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        // TODO add your handling code here:
-        
+
         log.logOut(user);
-        JOptionPane.showMessageDialog(this, "Logging out and return to home");
+        JOptionPane.showMessageDialog(this, "Logging out and returning to home");
         home.setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_logoutActionPerformed
 
     private void addstoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addstoryActionPerformed
-        // TODO add your handling code here:
+ 
     }//GEN-LAST:event_addstoryActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        home.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
   
  

@@ -141,5 +141,16 @@
         "email": "yaya@yahoo.com",
         "username": "yaya",
         "status": "online"
+    },
+    {
+        "password": "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+        "profilePhoto": "C:\\Users\\hp\\Downloads\\pfp.jpg",
+        "coverPhoto": "C:\\Users\\hp\\Downloads\\coverphoto.jpg",
+        "bio": "hello",
+        "dateOfBirth": "2024-12-08",
+        "userId": "30942b80-1da1-46c1-818c-849a112a825a",
+        "email": "adhd12@hotmail.com",
+        "username": "adhd1205",
+        "status": "online"
     }
 ]
