@@ -79,7 +79,7 @@ public class BlocksDatabase {
 
     public ArrayList<BlockedUsers> getALLBlockedUsers() {
         
-        ArrayList<BlockedUsers> blocks=BlocksDB.loadFile();
+      //  ArrayList<BlockedUsers> blocks=BlocksDB.loadFile();
         return blocks;
     }
     

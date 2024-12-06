@@ -4,11 +4,9 @@
  */
 package Frontend;
 
-import FriendManagementBackend.Requests;
-import FriendManagementBackend.RequestsDatabase;
-import FriendManagementBackend.RequestsManagement;
-import UserManagementBackend.User;
-import UserManagementBackend.UserDataBase;
+
+import FriendManagementBackend.*;
+import UserManagementBackend.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -18,15 +16,11 @@ import javax.swing.JOptionPane;
  */
 public class ManageFriends extends javax.swing.JFrame {
 
-    
     NewsFeed newsfeed;
     User currentuser;
-    RequestsManagement reqm=new RequestsManagement();
+    Management manage = new Management();
     UserDataBase userDB =UserDataBase.getDatabase();
-   // RequestsDatabase reqDB=RequestsDatabase.getinstance();
-    /**
-     * Creates new form ManageFriends
-     */
+
     public ManageFriends(NewsFeed newsfeed , User currentuser) {
         initComponents();
        this.newsfeed=newsfeed;
@@ -46,10 +40,10 @@ public class ManageFriends extends javax.swing.JFrame {
         viewReq = new javax.swing.JButton();
         back = new javax.swing.JButton();
         sendreq = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        suggestButton = new javax.swing.JButton();
+        viewFriends = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
@@ -77,46 +71,48 @@ public class ManageFriends extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText(" suggestions");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        suggestButton.setText(" Suggestions");
+        suggestButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                suggestButtonActionPerformed(evt);
             }
         });
 
-        jButton1.setText("jButton1");
+        viewFriends.setText("View Friends");
+        viewFriends.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewFriendsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewReq, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(sendreq, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(73, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(back))
-                .addGap(48, 48, 48))
+                    .addComponent(viewReq, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sendreq, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(viewFriends, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back)
+                    .addComponent(suggestButton, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(viewReq)
-                .addGap(27, 27, 27)
+                .addContainerGap(87, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(suggestButton)
+                    .addComponent(viewReq))
+                .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendreq)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                    .addComponent(viewFriends))
+                .addGap(50, 50, 50)
                 .addComponent(back)
                 .addGap(46, 46, 46))
         );
@@ -132,15 +128,13 @@ public class ManageFriends extends javax.swing.JFrame {
 
     private void viewReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReqActionPerformed
         // TODO add your handling code here:
-      
-       String Userid= currentuser.getUserId();
-       ArrayList<Requests> requests =reqm.getUserRequests(Userid);
-        RequestsManage reqmanage=new RequestsManage(this,requests);
+    
+       ViewRequests viewReqFrame=new ViewRequests(this,currentuser,manage);
         
-        reqmanage.setVisible(true);
+        viewReqFrame.setVisible(true);
         setVisible(false);
         
-        
+      
         
     }//GEN-LAST:event_viewReqActionPerformed
 
@@ -148,31 +142,43 @@ public class ManageFriends extends javax.swing.JFrame {
         // TODO add your handling code here:
         
       String senderid= currentuser.getUserId();
-      ArrayList<Requests> requests =reqm.getUserRequests(senderid);
+      ArrayList<Requests> requests =manage.getUserRequests(senderid);
       String usernametoadd= JOptionPane.showInputDialog("Enter username:");
       User receiver=userDB.getUserByUsername(usernametoadd);
+      
       String receiverid=receiver.getUserId();
       Requests R= new Requests(senderid,receiverid);
-      requests.add(R);
-      
-      //  RequestsManage reqmanage=new RequestsManage(this,requests);
+      manage.addrequest(R);
     }//GEN-LAST:event_sendreqActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void suggestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suggestButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        SuggestedFriends suggestFrame=new SuggestedFriends(this,currentuser,manage);
+        suggestFrame.setVisible(true);
+        setVisible(false);
+        
+        
+        
+    }//GEN-LAST:event_suggestButtonActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
         newsfeed.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
+    private void viewFriendsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewFriendsActionPerformed
+        // TODO add your handling code here:
+        ViewFriends  viewfriendsframe=new ViewFriends(this,currentuser,manage);
+        viewfriendsframe.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_viewFriendsActionPerformed
+
   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton sendreq;
+    private javax.swing.JButton suggestButton;
+    private javax.swing.JButton viewFriends;
     private javax.swing.JButton viewReq;
     // End of variables declaration//GEN-END:variables
 }

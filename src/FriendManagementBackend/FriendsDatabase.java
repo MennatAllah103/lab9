@@ -92,7 +92,7 @@ public class FriendsDatabase {
 
     public ArrayList<Friends> getALLFriends() {
         
-        ArrayList<Friends> friends =friendsDB.loadFile();
+      //  ArrayList<Friends> friends =friendsDB.loadFile();
         return friends;
     }
     

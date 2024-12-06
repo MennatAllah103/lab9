@@ -84,8 +84,10 @@ public class RequestsDatabase {
 
     public ArrayList<Requests> getALLRequests() {
         
-        ArrayList<Requests> requests=requestsDB.loadFile();
+       // ArrayList<Requests> requests=requestsDB.loadFile();
         return requests;
     }
+    
+   
 
 }

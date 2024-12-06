@@ -152,5 +152,27 @@
         "email": "n@gmail.com",
         "username": "Dareen10",
         "status": "online"
+    },
+    {
+        "password": "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-09",
+        "userId": "47d5973d-d4c6-4605-bcd5-694eb2339b6e",
+        "email": "Lina@gmail.com",
+        "username": "Lina",
+        "status": "online"
+    },
+    {
+        "password": "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2024-12-18",
+        "userId": "446c0781-b3f7-48c4-a4c9-88f0c24e815f",
+        "email": "Lamar@gmail.com",
+        "username": "Lamar",
+        "status": "online"
     }
 ]
