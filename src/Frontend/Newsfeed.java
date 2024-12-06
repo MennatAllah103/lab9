@@ -63,6 +63,11 @@ public class Newsfeed extends javax.swing.JFrame {
         ManageFriends.setBackground(new java.awt.Color(255, 204, 255));
         ManageFriends.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ManageFriends.setText("Manage Friends");
+        ManageFriends.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageFriendsActionPerformed(evt);
+            }
+        });
 
         logout.setBackground(new java.awt.Color(255, 204, 255));
         logout.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -167,6 +172,15 @@ public class Newsfeed extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_addPostActionPerformed
+
+    private void ManageFriendsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageFriendsActionPerformed
+        // TODO add your handling code here:
+        ManageFriends manage= new ManageFriends(this,user);
+        manage.setVisible(true);
+        this.dispose();
+        
+        
+    }//GEN-LAST:event_ManageFriendsActionPerformed
 
   
  

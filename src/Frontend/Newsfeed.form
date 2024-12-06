@@ -88,6 +88,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Manage Friends"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManageFriendsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="logout">
       <Properties>

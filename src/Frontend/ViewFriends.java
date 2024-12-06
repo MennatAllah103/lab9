@@ -78,6 +78,7 @@ public class ViewFriends extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(list);
 
+        remove.setBackground(new java.awt.Color(255, 204, 255));
         remove.setText("Remove");
         remove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +86,7 @@ public class ViewFriends extends javax.swing.JFrame {
             }
         });
 
+        block.setBackground(new java.awt.Color(255, 204, 255));
         block.setText("Block");
         block.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +97,7 @@ public class ViewFriends extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("             Your Friends");
 
+        back.setBackground(new java.awt.Color(255, 204, 255));
         back.setText("Back");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

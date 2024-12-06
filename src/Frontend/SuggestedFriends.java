@@ -76,6 +76,7 @@ public class SuggestedFriends extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(list);
 
+        sendrequest.setBackground(new java.awt.Color(255, 204, 255));
         sendrequest.setText("Send Request");
         sendrequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +84,7 @@ public class SuggestedFriends extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 204, 255));
         jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

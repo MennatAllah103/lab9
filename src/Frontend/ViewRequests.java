@@ -85,6 +85,7 @@ public class ViewRequests extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listreq);
 
+        acceptButton.setBackground(new java.awt.Color(255, 204, 255));
         acceptButton.setText("Accept");
         acceptButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +93,7 @@ public class ViewRequests extends javax.swing.JFrame {
             }
         });
 
+        DeclineButton.setBackground(new java.awt.Color(255, 204, 255));
         DeclineButton.setText("Decline");
         DeclineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +104,7 @@ public class ViewRequests extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("                   Friend Requests");
 
+        back.setBackground(new java.awt.Color(255, 204, 255));
         back.setText("Back");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

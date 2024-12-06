@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  */
 public class ManageFriends extends javax.swing.JFrame {
 
-    NewsFeed newsfeed;
+    Newsfeed newsfeed;
     User currentuser;
     Management manage = new Management();
     UserDataBase userDB =UserDataBase.getDatabase();
 
-    public ManageFriends(NewsFeed newsfeed , User currentuser) {
+    public ManageFriends(Newsfeed newsfeed , User currentuser) {
         initComponents();
        this.newsfeed=newsfeed;
        this.currentuser=currentuser;
@@ -50,6 +50,7 @@ public class ManageFriends extends javax.swing.JFrame {
             }
         });
 
+        viewReq.setBackground(new java.awt.Color(255, 204, 255));
         viewReq.setText("View Requests");
         viewReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +58,7 @@ public class ManageFriends extends javax.swing.JFrame {
             }
         });
 
+        back.setBackground(new java.awt.Color(255, 204, 255));
         back.setText("Return To NewsFeed");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,6 +66,7 @@ public class ManageFriends extends javax.swing.JFrame {
             }
         });
 
+        sendreq.setBackground(new java.awt.Color(255, 204, 255));
         sendreq.setText("Send Request");
         sendreq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +74,7 @@ public class ManageFriends extends javax.swing.JFrame {
             }
         });
 
+        suggestButton.setBackground(new java.awt.Color(255, 204, 255));
         suggestButton.setText(" Suggestions");
         suggestButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +82,7 @@ public class ManageFriends extends javax.swing.JFrame {
             }
         });
 
+        viewFriends.setBackground(new java.awt.Color(255, 204, 255));
         viewFriends.setText("View Friends");
         viewFriends.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
