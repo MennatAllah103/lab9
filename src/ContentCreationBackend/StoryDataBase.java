@@ -124,7 +124,7 @@ public class StoryDataBase {
         ArrayList<Story> friendStories = new ArrayList<>();
         ArrayList<Story> allStories = ReadStoriesFromFile();
         for (Story s : allStories) {
-            if (!userId.equals(s.getAuthorID())) {
+            if (!userId.equals(s.getAuthorID())) {   // condition will be edited after dareen send friends
                 friendStories.add(s);
             }
         }

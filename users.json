@@ -152,5 +152,16 @@
         "email": "adhd12@hotmail.com",
         "username": "adhd1205",
         "status": "online"
+    },
+    {
+        "password": "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=",
+        "profilePhoto": "defaultProfilePhoto.jpg",
+        "coverPhoto": "defaultCoverPhoto.jpg",
+        "bio": "",
+        "dateOfBirth": "2025-01-05",
+        "userId": "77d2caf6-64a4-4ee7-aa19-8d333d610ecb",
+        "email": "y@y.com",
+        "username": "newyaya",
+        "status": "online"
     }
 ]

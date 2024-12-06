@@ -111,7 +111,7 @@ public class PostDataBase {
         Post post = new Post();
         ArrayList<Post> userPosts = new ArrayList<>();
        // ArrayList<Post> allPosts = ReadPostsFromFile();
-        ArrayList<Post> allPosts = post.getPosts();
+        ArrayList<Post> allPosts = ReadPostsFromFile();
         for (Post p : allPosts) {
             if (userId.equals(p.getAuthorID())) {
                 userPosts.add(p);
