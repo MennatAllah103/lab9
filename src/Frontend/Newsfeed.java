@@ -4,6 +4,8 @@
  */
 package Frontend;
 
+import ContentCreationFrontend.AddPostFront;
+import ContentCreationFrontend.AddStoryFront;
 import ProfileManagmentFrontend.ViewProfile;
 import UserManagementBackend.User;
 import UserManagementBackend.UserDataBase;
@@ -38,8 +40,8 @@ public class Newsfeed extends javax.swing.JFrame {
         ManageFriends = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         newsfeedLabel = new javax.swing.JLabel();
-        Addpost = new javax.swing.JButton();
         addstory = new javax.swing.JButton();
+        addPost = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Newsfeed");
@@ -74,16 +76,21 @@ public class Newsfeed extends javax.swing.JFrame {
         newsfeedLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         newsfeedLabel.setText("Newsfeed");
 
-        Addpost.setBackground(new java.awt.Color(255, 204, 255));
-        Addpost.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        Addpost.setText("Add Post");
-
         addstory.setBackground(new java.awt.Color(255, 204, 255));
         addstory.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         addstory.setText("Add Story");
         addstory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addstoryActionPerformed(evt);
+            }
+        });
+
+        addPost.setBackground(new java.awt.Color(255, 204, 255));
+        addPost.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        addPost.setText("Add Post");
+        addPost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPostActionPerformed(evt);
             }
         });
 
@@ -96,9 +103,9 @@ public class Newsfeed extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ManageFriends)
                     .addComponent(newsfeedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(Addpost)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(addPost)
+                .addGap(37, 37, 37)
                 .addComponent(addstory)
                 .addGap(36, 36, 36)
                 .addComponent(btnVisitProfile)
@@ -116,8 +123,8 @@ public class Newsfeed extends javax.swing.JFrame {
                     .addComponent(ManageFriends)
                     .addComponent(btnVisitProfile)
                     .addComponent(logout)
-                    .addComponent(Addpost)
-                    .addComponent(addstory))
+                    .addComponent(addstory)
+                    .addComponent(addPost))
                 .addContainerGap(321, Short.MAX_VALUE))
         );
 
@@ -141,19 +148,32 @@ public class Newsfeed extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void addstoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addstoryActionPerformed
- 
+     
+         AddStoryFront story=new AddStoryFront();
+        story.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_addstoryActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         home.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
+    private void addPostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPostActionPerformed
+        // TODO add your handling code here:
+        AddPostFront post=new AddPostFront();
+        post.setVisible(true);
+        this.setVisible(false);
+        
+        
+    }//GEN-LAST:event_addPostActionPerformed
+
   
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Addpost;
     private javax.swing.JButton ManageFriends;
+    private javax.swing.JButton addPost;
     private javax.swing.JButton addstory;
     private javax.swing.JButton btnVisitProfile;
     private javax.swing.JButton logout;

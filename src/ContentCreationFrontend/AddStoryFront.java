@@ -8,6 +8,7 @@ import ContentCreationBackend.StoryDataBase;
 import ContentCreationBackend.Content;
 import ContentCreationBackend.FactoryContent;
 import ContentCreationBackend.Story;
+import Frontend.Newsfeed;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import UserManagementBackend.UserDataBase;
@@ -52,6 +53,8 @@ public class AddStoryFront extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Story");
 
+        CancelBtn.setBackground(new java.awt.Color(255, 204, 255));
+        CancelBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         CancelBtn.setText("Cancel");
         CancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,6 +62,8 @@ public class AddStoryFront extends javax.swing.JFrame {
             }
         });
 
+        ShareBtn.setBackground(new java.awt.Color(255, 204, 255));
+        ShareBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ShareBtn.setText("Share");
         ShareBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +81,8 @@ public class AddStoryFront extends javax.swing.JFrame {
         EnteredText.setRows(5);
         jScrollPane1.setViewportView(EnteredText);
 
+        ImageAddBtn.setBackground(new java.awt.Color(255, 204, 255));
+        ImageAddBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ImageAddBtn.setText("Add Image");
         ImageAddBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +148,8 @@ public class AddStoryFront extends javax.swing.JFrame {
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        Newsfeed news=new Newsfeed();
+        news.setVisible(true);
     }//GEN-LAST:event_CancelBtnActionPerformed
 
     private void ShareBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShareBtnActionPerformed
